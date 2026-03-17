@@ -16,17 +16,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxt/eslint',
-    '@nuxtjs/google-fonts',
   ],
-
-  googleFonts: {
-    families: {
-      Outfit: [400, 500, 600],
-      'Space+Grotesk': [400, 500, 700],
-    },
-    display: 'swap',
-    preload: true,
-  },
 
   i18n: {
     locales: [
