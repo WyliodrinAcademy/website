@@ -5,6 +5,12 @@ export default defineNuxtConfig({
   // Keep Nuxt 3-style root source directory (components/, pages/, etc. at project root)
   srcDir: '.',
 
+  // Nuxt 4 prefixes components with their folder name (layout/AppHeader → LayoutAppHeader).
+  // pathPrefix: false restores the Nuxt 3 behaviour — folder is for organisation only.
+  components: [
+    { path: '~/components', pathPrefix: false },
+  ],
+
   modules: [
     '@nuxt/ui',           // includes Tailwind v4 + @nuxt/icon automatically
     '@nuxtjs/i18n',
