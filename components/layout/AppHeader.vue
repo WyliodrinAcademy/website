@@ -89,7 +89,7 @@ const isMenuOpen = ref(false)
             v-for="link in navLinks"
             :key="link.key"
             :to="link.to"
-            class="rounded-md px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-gray-50 hover:text-primary-500"
+            class="rounded-md px-3 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-gray-50 hover:text-primary-500"
             active-class="bg-primary-50 text-primary-500"
             style="font-family: 'Outfit', sans-serif"
             @click="isMenuOpen = false"
