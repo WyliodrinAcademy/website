@@ -14,7 +14,7 @@
 
 export type HeaderButtonVariant = 'nav' | 'lang-active' | 'lang-inactive'
 
-const props = withDefaults(
+const _props = withDefaults(
   defineProps<{
     variant?: HeaderButtonVariant
   }>(),
@@ -29,21 +29,18 @@ const props = withDefaults(
       'inline-flex items-center justify-center cursor-pointer transition-colors duration-150',
 
       // ── nav variant ────────────────────────────────
-      variant === 'nav' && [
-        'text-[#1A1A1A] text-sm px-2 py-1',
-        'hover:text-primary-500',
-      ],
+      variant === 'nav' && ['text-ink text-sm px-2 py-1', 'hover:text-primary-500'],
 
       // ── lang-active (selected locale) ──────────────
       variant === 'lang-active' && [
-        'bg-[#560D08] text-[#000000] text-xs font-semibold uppercase tracking-wide',
-        'rounded-full px-3 py-1.5 min-w-[36px]',
+        'bg-burgundy text-[#000000] text-xs font-semibold uppercase tracking-wide',
+        'rounded-full px-3 py-1.5 min-w-9',
       ],
 
       // ── lang-inactive (unselected locale) ──────────
       variant === 'lang-inactive' && [
         'bg-[#000000] text-[#666666] text-xs font-semibold uppercase tracking-wide',
-        'rounded-full px-3 py-1.5 min-w-[36px]',
+        'rounded-full px-3 py-1.5 min-w-9',
         'hover:text-[#999999]',
       ],
     ]"

@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  // Keep Nuxt 3-style root source directory (components/, pages/, etc. at project root)
+  srcDir: '.',
+
   modules: [
     '@nuxt/ui',           // includes Tailwind v4 + @nuxt/icon automatically
     '@nuxtjs/i18n',

@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "deps:check": "ncu",
+    "deps:update": "ncu -u && npm install"
   },
   "dependencies": {
     "@nuxt/icon": "^1.10.3",
