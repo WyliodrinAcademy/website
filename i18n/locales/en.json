@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "home": {
+      "title": "WyliodrinAcademy",
+      "description": "WyliodrinAcademy — learn, grow, build."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to WyliodrinAcademy",
+      "subtitle": "Your subtitle goes here."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
