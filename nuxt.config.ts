@@ -7,26 +7,14 @@ export default defineNuxtConfig({
 
   // Nuxt 4 prefixes components with their folder name (layout/AppHeader → LayoutAppHeader).
   // pathPrefix: false restores the Nuxt 3 behaviour — folder is for organisation only.
-  components: [
-    { path: '~/components', pathPrefix: false },
-  ],
+  components: [{ path: '~/components', pathPrefix: false }],
 
   modules: [
-    '@nuxt/ui',           // includes Tailwind v4 + @nuxt/icon automatically
+    '@nuxt/ui', // includes Tailwind v4 + @nuxt/icon automatically
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxt/eslint',
-    '@nuxtjs/google-fonts',
   ],
-
-  googleFonts: {
-    families: {
-      Outfit: [400, 500, 600],
-      'Space+Grotesk': [400, 500, 700],
-    },
-    display: 'swap',
-    preload: true,
-  },
 
   i18n: {
     locales: [
@@ -49,4 +37,10 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-11-01',
+
+  vite: {
+    optimizeDeps: {
+      include: ['@vue/devtools-core', '@vue/devtools-kit'],
+    },
+  },
 })
