@@ -1,18 +1,22 @@
 {
   "meta": {
     "home": {
-      "title": "WyliodrinAcademy",
-      "description": "WyliodrinAcademy — learn, grow, build."
+      "title": "Wyliodrin Academy",
+      "description": "Wyliodrin Academy — learn, grow, build."
     }
   },
   "nav": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "trainings": "Trainings",
+    "instructors": "Instructors",
+    "resources": "Resources",
+    "our_impact": "Our Impact"
   },
   "home": {
     "hero": {
-      "title": "Welcome to WyliodrinAcademy",
+      "title": "Welcome to Wyliodrin Academy",
       "subtitle": "Your subtitle goes here."
     }
   },

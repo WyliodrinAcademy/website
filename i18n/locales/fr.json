@@ -1,18 +1,22 @@
 {
   "meta": {
     "home": {
-      "title": "WyliodrinAcademy",
-      "description": "WyliodrinAcademy — apprendre, progresser, construire."
+      "title": "Wyliodrin Academy",
+      "description": "Wyliodrin Academy — apprendre, progresser, construire."
     }
   },
   "nav": {
     "home": "Accueil",
     "about": "À propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "trainings": "Formations",
+    "instructors": "Formateurs",
+    "resources": "Ressources",
+    "our_impact": "Notre Impact"
   },
   "home": {
     "hero": {
-      "title": "Bienvenue sur WyliodrinAcademy",
+      "title": "Bienvenue sur Wyliodrin Academy",
       "subtitle": "Votre sous-titre ici."
     }
   },

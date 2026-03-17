@@ -1,32 +1,60 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@nuxt/ui";
 
-/* ─── Base resets & globals ───────────────────────────────────────────── */
+/* ─── Design tokens ───────────────────────────────────────────────────── */
+
+@theme {
+  /* Primary blue scale */
+  --color-primary-50:  #e6f0ff;
+  --color-primary-100: #cce0ff;
+  --color-primary-200: #99c2ff;
+  --color-primary-300: #66a3ff;
+  --color-primary-400: #3385ff;
+  --color-primary-500: #0066FF;
+  --color-primary-600: #0052cc;
+  --color-primary-700: #003d99;
+  --color-primary-800: #002966;
+  --color-primary-900: #001433;
+
+  /* Semantic */
+  --color-secondary: #1A1A2E;
+
+  /* Header-specific tokens */
+  --color-burgundy: #560D08;  /* lang-active button bg */
+  --color-ink:      #1A1A1A;  /* nav link text */
+  --color-muted:    #666666;  /* globe icon + lang-inactive text */
+
+  /* Typography */
+  --font-sans:    'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-grotesk: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  /* Layout */
+  --max-width-site: 1280px;
+}
+
+/* ─── Base resets ─────────────────────────────────────────────────────── */
 
 @layer base {
   html {
-    @apply scroll-smooth antialiased;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
   }
 
   body {
-    @apply bg-white text-secondary font-sans;
+    @apply bg-white font-sans;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
 }
 
-/* ─── Reusable component classes ─────────────────────────────────────── */
+/* ─── Reusable component classes ──────────────────────────────────────── */
 
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+    max-width: var(--max-width-site);
   }
 }
