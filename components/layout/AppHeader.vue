@@ -100,7 +100,7 @@ const isMenuOpen = ref(false)
           <!-- Language switcher row -->
           <div class="mt-3 flex items-center gap-2 border-t border-gray-100 px-3 pt-4">
             <Icon name="lucide:globe" :size="16" class="text-[#666666]" aria-hidden="true" />
-            <div class="flex items-center gap-1 rounded-full bg-[#F5F5F5] p-0.75">
+            <div class="flex items-center gap-1 rounded-l bg-[#F5F5F5] p-0.75">
               <HeaderButton
                 v-for="l in allLocales"
                 :key="l.code"

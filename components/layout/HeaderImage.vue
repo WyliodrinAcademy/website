@@ -17,13 +17,5 @@ const localePath = useLocalePath()
       loading="eager"
     />
 
-    <!-- ── Wordmark ────────────────────────────────────────────────── -->
-    <span
-      class="flex flex-col leading-tight font-semibold text-ink"
-      style="font-family: 'Outfit', sans-serif"
-    >
-      <span class="text-[15px]">Wyliodrin</span>
-      <span class="text-[15px]">Academy</span>
-    </span>
   </NuxtLink>
 </template>
