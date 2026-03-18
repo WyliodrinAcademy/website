@@ -51,6 +51,30 @@
     "visitResource": "Visiter Ressource",
     "noResults": "Aucune ressource ne correspond à votre recherche."
   },
+  "trainings": {
+    "heading": "Catalogue de Formations",
+    "subtitle": "Des formations complètes conçues pour les développeurs et équipes d'ingénierie professionnels",
+    "filters": {
+      "category": "Catégorie",
+      "level": "Niveau"
+    },
+    "showing": "{count} formations affichées",
+    "viewDetails": "Voir Détails",
+    "viewAll": "Tout Afficher",
+    "categories": {
+      "all": "Toutes",
+      "rust": "Rust",
+      "wasm": "WebAssembly",
+      "embedded": "Embarqué",
+      "interop": "Interopérabilité"
+    },
+    "levels": {
+      "all": "Tous",
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé"
+    }
+  },
   "impact": {
     "heading": "Notre Impact",
     "subtitle": "Des résultats mesurables issus de nos programmes de formation",

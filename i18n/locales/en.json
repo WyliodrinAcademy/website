@@ -51,6 +51,30 @@
     "visitResource": "Visit Resource",
     "noResults": "No resources match your search."
   },
+  "trainings": {
+    "heading": "Training Catalog",
+    "subtitle": "Comprehensive courses designed for professional developers and engineering teams",
+    "filters": {
+      "category": "Category",
+      "level": "Level"
+    },
+    "showing": "Showing {count} trainings",
+    "viewDetails": "View Details",
+    "viewAll": "View All",
+    "categories": {
+      "all": "All",
+      "rust": "Rust",
+      "wasm": "WebAssembly",
+      "embedded": "Embedded",
+      "interop": "Interoperability"
+    },
+    "levels": {
+      "all": "All",
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
   "impact": {
     "heading": "Our Impact",
     "subtitle": "Measurable results from our training programs",
