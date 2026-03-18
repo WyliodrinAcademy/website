@@ -20,6 +20,22 @@
       "subtitle": "Votre sous-titre ici."
     }
   },
+  "contact": {
+    "heading": "Nous Contacter",
+    "subtitle": "Discutons de la façon dont nous pouvons aider votre équipe à progresser",
+    "perks": {
+      "email":     { "title": "Réponse par Email",    "subtitle": "< 24 heures" },
+      "solutions": { "title": "Solutions Sur-Mesure",  "subtitle": "Pour votre équipe" },
+      "quality":   { "title": "Qualité Certifiée",     "subtitle": "Qualiopi" }
+    },
+    "form": {
+      "name":    "Nom Complet",
+      "email":   "Adresse Email",
+      "company": "Nom de l'Entreprise",
+      "message": "Message",
+      "submit":  "Envoyer le Message"
+    }
+  },
   "footer": {
     "description": "Formation professionnelle en Rust, WebAssembly et systèmes embarqués avec certification Qualiopi.",
     "quickLinks": "Liens Rapides",
