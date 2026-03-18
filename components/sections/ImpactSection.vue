@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const stats = computed(() => [
   { icon: 'lucide:book-open',  value: '150+',   label: t('impact.stats.trainings') },
@@ -8,8 +8,34 @@ const stats = computed(() => [
   { icon: 'lucide:building-2', value: '75+',    label: t('impact.stats.companies') },
 ])
 
-// Duplicate for seamless infinite marquee (×2 + per-card margin = exact -50% loop)
+// Duplicate for seamless infinite marquee
 const ticker = computed(() => [...stats.value, ...stats.value])
+
+// Exact pixel offset for the loop point: 4 × (card_width + margin_right).
+// Percentage-based translateX is unreliable because scrollWidth may omit the
+// last card's trailing margin, causing a visible jump on every loop reset.
+const trackRef = ref<HTMLElement>()
+const oneSetWidth = ref(0)
+
+function measureTrack() {
+  const track = trackRef.value
+  if (!track || !track.children.length) return
+  const card = track.children[0] as HTMLElement
+  const cardW = card.getBoundingClientRect().width
+  const mr = parseFloat(getComputedStyle(card).marginRight) || 0
+  oneSetWidth.value = Math.round(4 * (cardW + mr))
+}
+
+onMounted(async () => {
+  await nextTick()
+  measureTrack()
+})
+
+// Recompute if locale changes (labels may affect card width)
+watch(locale, async () => {
+  await nextTick()
+  measureTrack()
+})
 </script>
 
 <template>
@@ -29,7 +55,11 @@ const ticker = computed(() => [...stats.value, ...stats.value])
 
       <!-- Marquee ticker -->
       <div class="relative overflow-hidden">
-        <div class="marquee-track flex whitespace-nowrap">
+        <div
+          ref="trackRef"
+          class="marquee-track flex whitespace-nowrap"
+          :style="oneSetWidth ? { '--one-set-width': oneSetWidth + 'px' } : {}"
+        >
           <ImpactStatCard
             v-for="(stat, i) in ticker"
             :key="i"
@@ -43,7 +73,9 @@ const ticker = computed(() => [...stats.value, ...stats.value])
       <!-- CTA -->
       <div class="text-center mt-12 px-6">
         <p class="text-lg text-white/90 mb-6">{{ t('impact.cta') }}</p>
-        <UiButton variant="ghost">{{ t('impact.button') }}</UiButton>
+        <a href="/#contact">
+          <UiButton variant="ghost">{{ t('impact.button') }}</UiButton>
+        </a>
       </div>
     </div>
   </section>
@@ -54,7 +86,7 @@ const ticker = computed(() => [...stats.value, ...stats.value])
   animation: marquee 15s linear infinite;
 }
 
-/* Each card owns its right-margin so translateX(-50%) loops exactly at 1 set width */
+/* Each card owns its right-margin so the loop offset is predictable */
 .marquee-track > * {
   margin-right: 2rem;
 }
@@ -64,7 +96,8 @@ const ticker = computed(() => [...stats.value, ...stats.value])
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    /* Use JS-measured exact pixel value; falls back to ~50% before mount */
+    transform: translateX(calc(-1 * var(--one-set-width, 50%)));
   }
 }
 </style>
