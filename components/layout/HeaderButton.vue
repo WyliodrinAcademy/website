@@ -39,9 +39,9 @@ const _props = withDefaults(
 
       // ── lang-inactive (unselected locale) ──────────
       variant === 'lang-inactive' && [
-        'bg-[#000000] text-[#666666] text-xs font-semibold uppercase tracking-wide',
+        'bg-[#000000] text-white text-xs font-semibold uppercase tracking-wide',
         'rounded-xl px-3 py-1.5 min-w-9',
-        'hover:text-[#999999]',
+        'hover:text-white/80',
       ],
     ]"
     :style="

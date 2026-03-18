@@ -36,7 +36,7 @@ const resources = [
 </script>
 
 <template>
-  <section class="py-20 bg-white">
+  <section id="resources" class="py-20 bg-white">
     <div class="max-w-[1240px] mx-auto px-6">
       <UiSectionHeading
         title="Resources"

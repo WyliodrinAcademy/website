@@ -14,7 +14,7 @@ const form = reactive({
 </script>
 
 <template>
-  <section class="py-20 bg-[#f9f9f6]">
+  <section id="contact" class="py-20 bg-[#f9f9f6]">
     <div class="max-w-[1240px] mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <!-- Left: info -->

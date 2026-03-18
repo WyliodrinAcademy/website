@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 bg-[#f9f9f6]">
+  <section id="instructors" class="py-20 bg-[#f9f9f6]">
     <div class="max-w-[1240px] mx-auto px-6">
       <UiSectionHeading
         title="Meet Our Experts"
