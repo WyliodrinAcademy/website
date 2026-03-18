@@ -61,6 +61,11 @@
     "showing": "Showing {count} trainings",
     "viewDetails": "View Details",
     "viewAll": "View All",
+    "downloadProgram": "Download Program",
+    "letsTalk": "Let's Talk",
+    "overview": "Overview",
+    "topicsCovered": "Topics Covered",
+    "trainingDetails": "Training Details",
     "categories": {
       "all": "All",
       "rust": "Rust",

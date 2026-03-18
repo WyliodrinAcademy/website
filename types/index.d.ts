@@ -22,6 +22,8 @@ export interface ITrainingType {
   category: TrainingCategory
   description: string
   tags: string[]
+  details: string[]
+  programPdfLink: string
 }
 
 declare global {

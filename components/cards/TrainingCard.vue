@@ -8,6 +8,8 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
+defineEmits<{ 'view-details': [] }>()
+
 const cardRef = ref<HTMLElement | null>(null)
 const isVisible = ref(false)
 
@@ -54,7 +56,7 @@ onMounted(() => {
       <div class="flex flex-wrap gap-2 mb-6">
         <UiTagPill v-for="tag in training.tags" :key="tag">{{ tag }}</UiTagPill>
       </div>
-      <UiButton variant="dark" class="w-full justify-center">
+      <UiButton variant="dark" class="w-full justify-center" @click="$emit('view-details')">
         <Icon name="lucide:book-open" class="w-4 h-4" />
         {{ t('trainings.viewDetails') }}
         <Icon name="lucide:chevron-right" class="w-4 h-4" />

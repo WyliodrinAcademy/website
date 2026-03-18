@@ -61,6 +61,11 @@
     "showing": "{count} formations affichées",
     "viewDetails": "Voir Détails",
     "viewAll": "Tout Afficher",
+    "downloadProgram": "Télécharger le Programme",
+    "letsTalk": "Parlons-en",
+    "overview": "Aperçu",
+    "topicsCovered": "Sujets couverts",
+    "trainingDetails": "Détails de la Formation",
     "categories": {
       "all": "Toutes",
       "rust": "Rust",
