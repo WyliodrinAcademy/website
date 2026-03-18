@@ -13,7 +13,7 @@ const localePath = useLocalePath()
       alt="Wyliodrin Academy logo"
       width="40"
       height="40"
-      class="w-10 h-10 transition-transform duration-300 hover:scale-110"
+      class="h-10 w-auto transition-transform duration-300 hover:scale-110"
     />
 
   </NuxtLink>
