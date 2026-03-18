@@ -63,6 +63,24 @@
       "companies": "Entreprises partenaires"
     }
   },
+  "instructors": {
+    "heading": "Rencontrez nos experts",
+    "subtitle": "Apprenez avec des professionnels reconnus et une expérience terrain réelle",
+    "about": "À propos",
+    "viewLinkedin": "Voir le profil LinkedIn",
+    "experts": {
+      "alexandru": {
+        "name": "Alexandru Radovici",
+        "role": "Expert Rust & Systèmes Embarqués",
+        "bio": "Alexandru est un expert reconnu en programmation Rust et systèmes embarqués avec plus de 15 ans d'expérience. Il a dirigé de nombreux projets IoT et temps réel à grande échelle."
+      },
+      "ioana": {
+        "name": "Ioana Culic",
+        "role": "Spécialiste WebAssembly & Rust",
+        "bio": "Ioana est spécialisée en WebAssembly et technologies web modernes. Elle a une vaste expérience dans la création d'applications web haute performance et la formation de développeurs dans le monde entier."
+      }
+    }
+  },
   "footer": {
     "description": "Formation professionnelle en Rust, WebAssembly et systèmes embarqués avec certification Qualiopi.",
     "quickLinks": "Liens Rapides",

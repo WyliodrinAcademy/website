@@ -63,6 +63,24 @@
       "companies": "Companies Served"
     }
   },
+  "instructors": {
+    "heading": "Meet Our Experts",
+    "subtitle": "Learn from industry-leading professionals with real-world experience",
+    "about": "About",
+    "viewLinkedin": "View LinkedIn Profile",
+    "experts": {
+      "alexandru": {
+        "name": "Alexandru Radovici",
+        "role": "Lead Rust & Embedded Systems Expert",
+        "bio": "Alexandru is a renowned expert in Rust programming and embedded systems with over 15 years of experience. He has led multiple large-scale projects in IoT and real-time systems."
+      },
+      "ioana": {
+        "name": "Ioana Culic",
+        "role": "WebAssembly & Rust Specialist",
+        "bio": "Ioana specializes in WebAssembly and modern web technologies. She has extensive experience in building high-performance web applications and training developers worldwide."
+      }
+    }
+  },
   "footer": {
     "description": "Professional training in Rust, WebAssembly, and embedded systems with Qualiopi certification.",
     "quickLinks": "Quick Links",
