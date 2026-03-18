@@ -12,6 +12,13 @@ const navLinks = [
 const allLocales = computed(() => locales.value as Array<{ code: string; name: string }>)
 
 const isMenuOpen = ref(false)
+
+async function switchLocale(code: 'en' | 'fr') {
+  const scrollY = window.scrollY
+  await setLocale(code)
+  await nextTick()
+  window.scrollTo({ top: scrollY, behavior: 'instant' })
+}
 </script>
 
 <template>
@@ -55,7 +62,7 @@ const isMenuOpen = ref(false)
               :variant="l.code === locale ? 'lang-active' : 'lang-inactive'"
               :aria-pressed="l.code === locale"
               :aria-label="`Switch to ${l.name}`"
-              @click="setLocale(l.code as 'en' | 'fr')"
+              @click="switchLocale(l.code as 'en' | 'fr')"
             >
               {{ l.code.toUpperCase() }}
             </HeaderButton>
@@ -105,7 +112,7 @@ const isMenuOpen = ref(false)
                 :aria-label="`Switch to ${l.name}`"
                 @click="
                   () => {
-                    setLocale(l.code as 'en' | 'fr')
+                    switchLocale(l.code as 'en' | 'fr')
                     isMenuOpen = false
                   }
                 "
