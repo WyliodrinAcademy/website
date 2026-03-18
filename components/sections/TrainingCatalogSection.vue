@@ -1,26 +1,39 @@
 <script setup lang="ts">
-import type { Training } from '~/components/cards/TrainingCard.vue'
+import type { ITrainingType } from '~/types/index'
 
-const categories = [
-  { id: 'all', label: 'All', emoji: '🎯' },
-  { id: 'rust', label: 'Rust', emoji: '🦀' },
-  { id: 'wasm', label: 'WebAssembly', emoji: '⚡' },
-  { id: 'embedded', label: 'Embedded', emoji: '🔧' },
-  { id: 'interop', label: 'Interoperability', emoji: '🔗' },
-]
+const { t } = useI18n()
 
-const levels = ['All', 'Beginner', 'Intermediate', 'Advanced']
+const categories = computed(() => [
+  { id: 'all', label: t('trainings.categories.all'), emoji: '🎯' },
+  { id: 'rust', label: t('trainings.categories.rust'), emoji: '🦀' },
+  { id: 'wasm', label: t('trainings.categories.wasm'), emoji: '⚡' },
+  { id: 'embedded', label: t('trainings.categories.embedded'), emoji: '🔧' },
+  { id: 'interop', label: t('trainings.categories.interop'), emoji: '🔗' },
+])
+
+const levels = computed(() => [
+  { id: 'All', label: t('trainings.levels.all') },
+  { id: 'Beginner', label: t('trainings.levels.beginner') },
+  { id: 'Intermediate', label: t('trainings.levels.intermediate') },
+  { id: 'Advanced', label: t('trainings.levels.advanced') },
+])
 
 const activeCategory = ref('all')
 const activeLevel = ref('All')
+const showAll = ref(false)
 
-const trainings: Training[] = [
+watch([activeCategory, activeLevel], () => {
+  showAll.value = false
+})
+
+const trainings: ITrainingType[] = [
   {
     emoji: '🦀',
     title: 'Rust Fundamentals',
     subtitle: '(Short Format)',
     duration: '3 days',
     level: 'Beginner',
+    category: 'rust',
     description:
       'Understand how Rust thinks about memory. Covers ownership, borrowing, and the core type system — the foundations that determine whether your team writes safe Rust or unsafe habits wrapped in Rust syntax.',
     tags: ['Rust', 'Ownership', 'Memory Safety', 'C/C++', 'Traits'],
@@ -31,6 +44,7 @@ const trainings: Training[] = [
     subtitle: '(With Final Project)',
     duration: '5 days',
     level: 'Beginner',
+    category: 'rust',
     description:
       'Everything in the 3-day program, plus design patterns, error handling, and a complete final project built with mentorship. For developers who need to move from understanding Rust to structuring a real codebase in it.',
     tags: ['Rust', 'Ownership', 'Error Handling', 'Design Patterns', 'Crates & Modules'],
@@ -41,19 +55,132 @@ const trainings: Training[] = [
     subtitle: '(Extended Format)',
     duration: '7 days',
     level: 'Beginner',
+    category: 'rust',
     description:
       'The most comprehensive Rust foundation program. Covers the full language including smart pointers, concurrency, memory models, and unit testing. For teams that need a solid, production-ready Rust foundation from day one.',
     tags: ['Rust', 'Concurrency', 'Smart Pointers', 'Memory Models', 'Testing'],
   },
+  {
+    emoji: '🔌',
+    title: 'Embedded Development in Rust',
+    duration: '6 days',
+    level: 'Intermediate',
+    category: 'embedded',
+    description:
+      'Bare-metal and async firmware development for teams building safety-critical embedded systems. Covers the full embedded Rust stack — from hardware abstraction layers to real-time networking and OS-level memory protection.',
+    tags: ['Embedded', 'Embassy', 'HAL', 'Bare-metal', 'Tock OS'],
+  },
+  {
+    emoji: '⚡',
+    title: 'Asynchronous Rust',
+    duration: '5 days',
+    level: 'Intermediate',
+    category: 'rust',
+    description:
+      'Master async Rust with Tokio and learn to build your own runtime. For system-level developers and backend engineers who need to understand not just how async works in Rust, but why it works the way it does.',
+    tags: ['Async/Await', 'Tokio', 'Futures', 'Streams', 'Performance'],
+  },
+  {
+    emoji: '🌐',
+    title: 'Web Development in Rust',
+    duration: '4 days',
+    level: 'Intermediate',
+    category: 'rust',
+    description:
+      'Build and deploy full-stack Rust applications using Rocket for the backend and WebAssembly for the frontend. Covers API design, authentication, middleware, and production deployment with Docker and NGINX.',
+    tags: ['Rocket', 'REST API', 'WebAssembly', 'Auth', 'Docker'],
+  },
+  {
+    emoji: '🖥️',
+    title: 'Desktop Applications with Tauri',
+    duration: '3 days',
+    level: 'Intermediate',
+    category: 'rust',
+    description:
+      'Build lightweight, cross-platform desktop applications using Rust and Tauri. Covers multi-window interfaces, async backend communication, database integration, and application distribution — for teams moving away from Electron.',
+    tags: ['Tauri', 'Rust', 'Cross-platform', 'Async', 'Desktop'],
+  },
+  {
+    emoji: '🔧',
+    title: 'Rust Interoperability with C/C++',
+    duration: '4–5 days',
+    level: 'Intermediate',
+    category: 'interop',
+    description:
+      'Integrate Rust modules safely into existing C and C++ codebases. For teams doing incremental migration — new modules in Rust, legacy code preserved at the boundary — without stopping production or introducing unsafe behavior.',
+    tags: ['FFI', 'bindgen', 'CXX', 'Memory Safety', 'Legacy Migration'],
+  },
+  {
+    emoji: '🐍',
+    title: 'Rust Interoperability with Python',
+    duration: 'Custom',
+    level: 'Intermediate',
+    category: 'interop',
+    description:
+      'Call Rust from Python using PyO3 and FFI, and package extensions with maturin. For Python developers who need performance-critical components without rewriting their entire stack — Rust where it matters, Python where it works.',
+    tags: ['PyO3', 'FFI', 'maturin', 'Python Extensions', 'Performance'],
+  },
+  {
+    emoji: '✅',
+    title: 'Test-Driven Development in Rust',
+    duration: '3–4 days',
+    level: 'Intermediate',
+    category: 'rust',
+    description:
+      'Apply TDD principles in Rust with integrated tooling and CI pipelines. For teams that want robust software processes — not just working code — with automated testing, coverage reporting, and documentation workflows built in from the start.',
+    tags: ['TDD', 'cargo test', 'clippy', 'Mocking', 'CI/CD'],
+  },
+  {
+    emoji: '🐛',
+    title: 'Debugging in Rust',
+    duration: '2–3 days',
+    level: 'Advanced',
+    category: 'rust',
+    description:
+      'Confident debugging across the full Rust stack — from logging and stack traces to async deadlocks and embedded hardware. For developers who are writing Rust in production and need to diagnose complex issues fast.',
+    tags: ['GDB', 'miri', 'tokio-console', 'tracing', 'probe-rs'],
+  },
+  {
+    emoji: '🧩',
+    title: 'WebAssembly with Rust',
+    duration: '4–5 days',
+    level: 'Intermediate',
+    category: 'wasm',
+    description:
+      'Compile Rust to WebAssembly, integrate with JavaScript, and deploy system-level applications using Wasmtime. For developers building portable, high-performance applications that run at the edge, in the browser, or on any platform.',
+    tags: ['WebAssembly', 'WASI', 'Wasmtime', 'JavaScript', 'binaryen'],
+  },
+  {
+    emoji: '📊',
+    title: 'Performance Evaluation in Rust',
+    duration: '4–5 days',
+    level: 'Advanced',
+    category: 'rust',
+    description:
+      'Analyze and systematically improve memory, CPU, and async runtime performance in Rust applications. For high-performance software developers who need to move beyond working code to production-grade efficiency.',
+    tags: ['flamegraph', 'criterion', 'tracing', 'Benchmarking', 'Heap Profiling'],
+  },
 ]
+
+const filteredTrainings = computed(() => {
+  return trainings.filter((t) => {
+    const matchesCategory = activeCategory.value === 'all' || t.category === activeCategory.value
+    const matchesLevel = activeLevel.value === 'All' || t.level === activeLevel.value
+    return matchesCategory && matchesLevel
+  })
+})
+
+const displayedTrainings = computed(() =>
+  showAll.value ? filteredTrainings.value : filteredTrainings.value.slice(0, 3),
+)
 </script>
 
 <template>
   <section id="trainings" class="py-12 md:py-20 bg-white">
     <div class="max-w-[1240px] mx-auto px-6">
       <UiSectionHeading
-        title="Training Catalog"
-        subtitle="Comprehensive courses designed for professional developers and engineering teams"
+        :title="t('trainings.heading')"
+        :subtitle="t('trainings.subtitle')"
         align="center"
       />
 
@@ -63,7 +190,7 @@ const trainings: Training[] = [
         <div class="mb-6">
           <div class="flex items-center gap-2 mb-3">
             <Icon name="lucide:funnel" class="w-5 h-5 text-[#666]" />
-            <span class="text-sm font-medium text-[#666]">Category</span>
+            <span class="text-sm font-medium text-[#666]">{{ t('trainings.filters.category') }}</span>
           </div>
           <div class="flex flex-wrap gap-3">
             <UiFilterChip
@@ -81,17 +208,17 @@ const trainings: Training[] = [
         <!-- Level filter -->
         <div>
           <div class="flex items-center gap-2 mb-3">
-            <span class="text-sm font-medium text-[#666]">Level</span>
+            <span class="text-sm font-medium text-[#666]">{{ t('trainings.filters.level') }}</span>
           </div>
           <div class="flex flex-wrap gap-3">
             <UiFilterChip
-              v-for="level in levels"
-              :key="level"
-              :active="activeLevel === level"
+              v-for="lvl in levels"
+              :key="lvl.id"
+              :active="activeLevel === lvl.id"
               active-color="orange"
-              @click="activeLevel = level"
+              @click="activeLevel = lvl.id"
             >
-              {{ level }}
+              {{ lvl.label }}
             </UiFilterChip>
           </div>
         </div>
@@ -99,18 +226,26 @@ const trainings: Training[] = [
 
       <!-- Count -->
       <div class="mb-6">
-        <p class="text-sm text-[#666]">Showing {{ trainings.length }} trainings</p>
+        <p class="text-sm text-[#666]">{{ t('trainings.showing', { count: filteredTrainings.length }) }}</p>
       </div>
 
       <!-- Cards grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <TrainingCard v-for="(training, i) in trainings" :key="i" :training="training" />
+        <TrainingCard
+          v-for="(training, i) in displayedTrainings"
+          :key="`${training.title}-${training.subtitle ?? ''}`"
+          :training="training"
+          :index="i"
+        />
       </div>
 
       <!-- View All -->
-      <div class="text-center mt-8">
-        <button class="text-[#999] hover:text-[#666] underline text-sm font-medium transition-colors">
-          View All
+      <div v-if="filteredTrainings.length > 3 && !showAll" class="text-center mt-8">
+        <button
+          class="text-[#999] hover:text-[#666] underline text-sm font-medium transition-colors"
+          @click="showAll = true"
+        >
+          {{ t('trainings.viewAll') }}
         </button>
       </div>
     </div>

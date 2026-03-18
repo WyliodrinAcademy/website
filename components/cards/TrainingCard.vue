@@ -1,19 +1,37 @@
 <script setup lang="ts">
-export interface Training {
-  emoji: string
-  title: string
-  subtitle?: string
-  duration: string
-  level: 'Beginner' | 'Intermediate' | 'Advanced'
-  description: string
-  tags: string[]
-}
+import type { ITrainingType } from '~/types/index'
 
-defineProps<{ training: Training }>()
+const props = defineProps<{
+  training: ITrainingType
+  index?: number
+}>()
+
+const { t } = useI18n()
+
+const cardRef = ref<HTMLElement | null>(null)
+const isVisible = ref(false)
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true
+        observer.disconnect()
+      }
+    },
+    { threshold: 0.1 },
+  )
+  if (cardRef.value) observer.observe(cardRef.value)
+})
 </script>
 
 <template>
-  <div class="bg-white rounded-xl border border-[#d7d7d7] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+  <div
+    ref="cardRef"
+    class="bg-white rounded-xl border border-[#d7d7d7] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out h-full flex flex-col"
+    :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[19px]'"
+    :style="{ transitionDelay: isVisible ? `${(props.index ?? 0) % 3 * 150}ms` : '0ms' }"
+  >
     <!-- Card header -->
     <div class="bg-gradient-to-br from-[#f9f9f6] to-white p-6 border-b border-[#d7d7d7]">
       <div class="flex items-start justify-between mb-3">
@@ -38,7 +56,7 @@ defineProps<{ training: Training }>()
       </div>
       <UiButton variant="dark" class="w-full justify-center">
         <Icon name="lucide:book-open" class="w-4 h-4" />
-        View Details
+        {{ t('trainings.viewDetails') }}
         <Icon name="lucide:chevron-right" class="w-4 h-4" />
       </UiButton>
     </div>
