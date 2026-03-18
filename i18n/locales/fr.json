@@ -34,6 +34,10 @@
       "company": "Nom de l'Entreprise",
       "message": "Message",
       "submit":  "Envoyer le Message"
+    },
+    "success": {
+      "title": "Message Envoyé !",
+      "body":  "Merci ! Nous vous répondrons dans les plus brefs délais."
     }
   },
   "footer": {
