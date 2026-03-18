@@ -1,9 +1,14 @@
 <script setup lang="ts">
-const perks = [
-  { emoji: '📧', title: 'Email Response', subtitle: '< 24 hours' },
-  { emoji: '🎯', title: 'Custom Solutions', subtitle: 'For your team' },
-  { emoji: '🏆', title: 'Quality Certified', subtitle: 'Qualiopi' },
-]
+const { t, locale } = useI18n()
+
+const animationKey = ref(0)
+watch(locale, () => { animationKey.value++ })
+
+const perks = computed(() => [
+  { emoji: '📧', title: t('contact.perks.email.title'),     subtitle: t('contact.perks.email.subtitle') },
+  { emoji: '🎯', title: t('contact.perks.solutions.title'), subtitle: t('contact.perks.solutions.subtitle') },
+  { emoji: '🏆', title: t('contact.perks.quality.title'),   subtitle: t('contact.perks.quality.subtitle') },
+])
 
 const form = reactive({
   name: '',
@@ -21,9 +26,9 @@ const form = reactive({
         <div class="space-y-6">
           <div>
             <h2 class="text-4xl font-bold text-[#f92d04] mb-4" style="font-family: 'Space Grotesk', sans-serif">
-              Get in Touch
+              {{ t('contact.heading') }}
             </h2>
-            <p class="text-xl text-[#666]">Let's discuss how we can help your team grow</p>
+            <p class="text-xl text-[#666]">{{ t('contact.subtitle') }}</p>
           </div>
 
           <!-- Gradient blob + perk cards -->
@@ -35,11 +40,12 @@ const form = reactive({
               <!-- Cards -->
               <div class="relative z-10 space-y-4 mt-8">
                 <ContactInfoCard
-                  v-for="perk in perks"
-                  :key="perk.title"
+                  v-for="(perk, i) in perks"
+                  :key="`${animationKey}-${perk.emoji}`"
                   :emoji="perk.emoji"
                   :title="perk.title"
                   :subtitle="perk.subtitle"
+                  :index="i"
                 />
               </div>
             </div>
@@ -50,7 +56,7 @@ const form = reactive({
         <div class="bg-white rounded-2xl p-8 shadow-xl border border-[#d7d7d7]">
           <form class="space-y-6" @submit.prevent>
             <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">Full Name</label>
+              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
               <input
                 v-model="form.name"
                 type="text"
@@ -59,7 +65,7 @@ const form = reactive({
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">Email Address</label>
+              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
               <input
                 v-model="form.email"
                 type="email"
@@ -68,7 +74,7 @@ const form = reactive({
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">Company Name</label>
+              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
               <input
                 v-model="form.company"
                 type="text"
@@ -77,7 +83,7 @@ const form = reactive({
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">Message</label>
+              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
               <textarea
                 v-model="form.message"
                 required
@@ -89,7 +95,7 @@ const form = reactive({
               type="submit"
               class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
             >
-              Send Message
+              {{ t('contact.form.submit') }}
               <Icon name="lucide:send" class="w-5 h-5" />
             </button>
           </form>

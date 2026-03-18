@@ -20,6 +20,22 @@
       "subtitle": "Your subtitle goes here."
     }
   },
+  "contact": {
+    "heading": "Get in Touch",
+    "subtitle": "Let's discuss how we can help your team grow",
+    "perks": {
+      "email":     { "title": "Email Response",   "subtitle": "< 24 hours" },
+      "solutions": { "title": "Custom Solutions",  "subtitle": "For your team" },
+      "quality":   { "title": "Quality Certified", "subtitle": "Qualiopi" }
+    },
+    "form": {
+      "name":    "Full Name",
+      "email":   "Email Address",
+      "company": "Company Name",
+      "message": "Message",
+      "submit":  "Send Message"
+    }
+  },
   "footer": {
     "description": "Professional training in Rust, WebAssembly, and embedded systems with Qualiopi certification.",
     "quickLinks": "Quick Links",
