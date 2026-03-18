@@ -1,6 +1,6 @@
 <template>
-  <section class="flex items-center bg-gradient-to-br from-[#f9f9f6] via-white to-[#f9f9f6] pt-20">
-    <div class="max-w-[1240px] mx-auto px-6 py-12 md:py-20 w-full">
+  <section class="flex items-center bg-linear-to-br from-[#f9f9f6] via-white to-[#f9f9f6] pt-20">
+    <div class="max-w-310 mx-auto px-6 py-12 md:py-20 w-full">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Left: text content -->
         <div class="space-y-6">
@@ -19,7 +19,8 @@
 
           <!-- Subtitle -->
           <p class="text-lg md:text-xl text-[#666] leading-relaxed max-w-xl">
-            B2B training excellence with Qualiopi certification. Build safer, faster systems with industry-leading experts.
+            B2B training excellence with Qualiopi certification. Build safer, faster systems with
+            industry-leading experts.
           </p>
 
           <!-- CTA buttons -->
@@ -47,7 +48,7 @@
         </div>
 
         <!-- Right: placeholder (Figma image not available) -->
-        <div class="relative h-[400px] md:h-[600px] hidden md:block" />
+        <div class="relative h-100 md:h-150 hidden md:block" />
       </div>
     </div>
   </section>

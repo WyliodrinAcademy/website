@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t, locale, locales, setLocale } = useI18n()
-const router = useRouter()
 
 const navLinks = [
   { key: 'trainings', href: '/#trainings' },
@@ -15,16 +14,8 @@ const allLocales = computed(() => locales.value as Array<{ code: string; name: s
 const isMenuOpen = ref(false)
 
 async function switchLocale(code: 'en' | 'fr') {
-  const scrollY = window.scrollY
-  // Strip hash from both Vue Router state and browser URL so that
-  // when i18n navigates to the new locale URL it won't include the
-  // hash — preventing the browser from auto-scrolling to the anchor.
-  if (router.currentRoute.value.hash) {
-    await router.replace({ hash: '' })
-  }
-  await setLocale(code)
+  await setLocale(code) // navigates to /fr/ or /
   await nextTick()
-  window.scrollTo({ top: scrollY, behavior: 'instant' })
 }
 </script>
 
@@ -39,11 +30,7 @@ async function switchLocale(code: 'en' | 'fr') {
         class="hidden flex-1 items-center justify-center gap-6 md:flex"
         aria-label="Main navigation"
       >
-        <a
-          v-for="link in navLinks"
-          :key="link.key"
-          :href="link.href"
-        >
+        <a v-for="link in navLinks" :key="link.key" :href="link.href">
           <HeaderButton variant="nav">
             {{ t(`nav.${link.key}`) }}
           </HeaderButton>
