@@ -29,7 +29,7 @@ const _props = withDefaults(
       'inline-flex items-center justify-center cursor-pointer transition-colors duration-150',
 
       // ── nav variant ────────────────────────────────
-      variant === 'nav' && ['text-ink text-sm font-semibold px-2 py-1', 'hover:text-primary-500'],
+      variant === 'nav' && ['text-ink text-sm font-semibold px-2 py-1', 'hover:text-[#f0441a]'],
 
       // ── lang-active (selected locale) ──────────────
       variant === 'lang-active' && [
