@@ -28,7 +28,7 @@ onMounted(() => {
 <template>
   <div
     ref="cardRef"
-    class="bg-white rounded-xl border border-[#d7d7d7] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out h-full flex flex-col"
+    class="bg-white rounded-xl border border-[#d7d7d7] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ease-out h-full flex flex-col"
     :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[19px]'"
     :style="{ transitionDelay: isVisible ? `${(props.index ?? 0) % 3 * 150}ms` : '0ms' }"
   >
