@@ -1,13 +1,15 @@
 <script setup lang="ts">
-const stats = [
-  { icon: 'lucide:book-open', value: '150+', label: 'Trainings Delivered' },
-  { icon: 'lucide:award', value: '98%', label: 'Satisfaction Rate' },
-  { icon: 'lucide:users', value: '2,500+', label: 'Students Trained' },
-  { icon: 'lucide:building-2', value: '75+', label: 'Companies Served' },
-]
+const { t } = useI18n()
 
-// Triplicate for seamless infinite marquee
-const ticker = [...stats, ...stats, ...stats]
+const stats = computed(() => [
+  { icon: 'lucide:book-open',  value: '150+',   label: t('impact.stats.trainings') },
+  { icon: 'lucide:award',      value: '98%',    label: t('impact.stats.satisfaction') },
+  { icon: 'lucide:users',      value: '2,500+', label: t('impact.stats.students') },
+  { icon: 'lucide:building-2', value: '75+',    label: t('impact.stats.companies') },
+])
+
+// Duplicate for seamless infinite marquee (×2 + per-card margin = exact -50% loop)
+const ticker = computed(() => [...stats.value, ...stats.value])
 </script>
 
 <template>
@@ -21,14 +23,14 @@ const ticker = [...stats, ...stats, ...stats]
     <div class="relative z-10">
       <!-- Heading -->
       <div class="text-center mb-12 px-6">
-        <h2 class="text-4xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif">Our Impact</h2>
-        <p class="text-xl text-white/90 max-w-3xl mx-auto">Measurable results from our training programs</p>
+        <h2 class="text-4xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif">{{ t('impact.heading') }}</h2>
+        <p class="text-xl text-white/90 max-w-3xl mx-auto">{{ t('impact.subtitle') }}</p>
       </div>
 
       <!-- Marquee ticker -->
       <div class="relative overflow-hidden">
-        <div class="marquee-track flex gap-8 whitespace-nowrap">
-          <StatCard
+        <div class="marquee-track flex whitespace-nowrap">
+          <ImpactStatCard
             v-for="(stat, i) in ticker"
             :key="i"
             :icon="stat.icon"
@@ -40,8 +42,8 @@ const ticker = [...stats, ...stats, ...stats]
 
       <!-- CTA -->
       <div class="text-center mt-12 px-6">
-        <p class="text-lg text-white/90 mb-6">Join hundreds of developers who have transformed their careers</p>
-        <UiButton variant="ghost">Start Your Journey</UiButton>
+        <p class="text-lg text-white/90 mb-6">{{ t('impact.cta') }}</p>
+        <UiButton variant="ghost">{{ t('impact.button') }}</UiButton>
       </div>
     </div>
   </section>
@@ -49,7 +51,12 @@ const ticker = [...stats, ...stats, ...stats]
 
 <style scoped>
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 15s linear infinite;
+}
+
+/* Each card owns its right-margin so translateX(-50%) loops exactly at 1 set width */
+.marquee-track > * {
+  margin-right: 2rem;
 }
 
 @keyframes marquee {
@@ -57,7 +64,7 @@ const ticker = [...stats, ...stats, ...stats]
     transform: translateX(0);
   }
   to {
-    transform: translateX(-33.333%);
+    transform: translateX(-50%);
   }
 }
 </style>

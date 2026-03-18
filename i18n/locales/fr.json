@@ -51,6 +51,18 @@
     "visitResource": "Visiter Ressource",
     "noResults": "Aucune ressource ne correspond à votre recherche."
   },
+  "impact": {
+    "heading": "Notre Impact",
+    "subtitle": "Des résultats mesurables issus de nos programmes de formation",
+    "cta": "Rejoignez des centaines de développeurs qui ont transformé leur carrière",
+    "button": "Commencer Votre Parcours",
+    "stats": {
+      "trainings": "Formations dispensées",
+      "satisfaction": "Taux de satisfaction",
+      "students": "Étudiants formés",
+      "companies": "Entreprises partenaires"
+    }
+  },
   "footer": {
     "description": "Formation professionnelle en Rust, WebAssembly et systèmes embarqués avec certification Qualiopi.",
     "quickLinks": "Liens Rapides",

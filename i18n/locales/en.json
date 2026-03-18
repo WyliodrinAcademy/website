@@ -51,6 +51,18 @@
     "visitResource": "Visit Resource",
     "noResults": "No resources match your search."
   },
+  "impact": {
+    "heading": "Our Impact",
+    "subtitle": "Measurable results from our training programs",
+    "cta": "Join hundreds of developers who have transformed their careers",
+    "button": "Start Your Journey",
+    "stats": {
+      "trainings": "Trainings Delivered",
+      "satisfaction": "Satisfaction Rate",
+      "students": "Students Trained",
+      "companies": "Companies Served"
+    }
+  },
   "footer": {
     "description": "Professional training in Rust, WebAssembly, and embedded systems with Qualiopi certification.",
     "quickLinks": "Quick Links",
