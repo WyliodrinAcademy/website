@@ -11,7 +11,7 @@ const ticker = [...stats, ...stats, ...stats]
 </script>
 
 <template>
-  <section class="py-16 bg-gradient-to-br from-[#560d08] to-[#ba321f] text-white relative overflow-hidden">
+  <section id="our-impact" class="py-16 bg-gradient-to-br from-[#560d08] to-[#ba321f] text-white relative overflow-hidden">
     <!-- Background blobs -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />

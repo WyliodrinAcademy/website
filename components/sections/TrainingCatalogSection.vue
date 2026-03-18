@@ -49,7 +49,7 @@ const trainings: Training[] = [
 </script>
 
 <template>
-  <section class="py-12 md:py-20 bg-white">
+  <section id="trainings" class="py-12 md:py-20 bg-white">
     <div class="max-w-[1240px] mx-auto px-6">
       <UiSectionHeading
         title="Training Catalog"

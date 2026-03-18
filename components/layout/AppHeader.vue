@@ -1,14 +1,13 @@
 <script setup lang="ts">
 const { t, locale, locales, setLocale } = useI18n()
-const localePath = useLocalePath()
 
-const navLinks = computed(() => [
-  { key: 'trainings', to: localePath('/trainings') },
-  { key: 'instructors', to: localePath('/instructors') },
-  { key: 'resources', to: localePath('/resources') },
-  { key: 'our_impact', to: localePath('/our-impact') },
-  { key: 'contact', to: localePath('/contact') },
-])
+const navLinks = [
+  { key: 'trainings', href: '/#trainings' },
+  { key: 'instructors', href: '/#instructors' },
+  { key: 'resources', href: '/#resources' },
+  { key: 'our_impact', href: '/#our-impact' },
+  { key: 'contact', href: '/#contact' },
+]
 
 const allLocales = computed(() => locales.value as Array<{ code: string; name: string }>)
 
@@ -26,16 +25,15 @@ const isMenuOpen = ref(false)
         class="hidden flex-1 items-center justify-center gap-6 md:flex"
         aria-label="Main navigation"
       >
-        <NuxtLink
+        <a
           v-for="link in navLinks"
           :key="link.key"
-          :to="link.to"
-          class="active:text-primary-500"
+          :href="link.href"
         >
           <HeaderButton variant="nav">
             {{ t(`nav.${link.key}`) }}
           </HeaderButton>
-        </NuxtLink>
+        </a>
       </nav>
 
       <!-- ── RIGHT: Language switcher + mobile trigger ─────────────── -->
@@ -47,7 +45,7 @@ const isMenuOpen = ref(false)
 
           <!-- Language pill wrapper -->
           <div
-            class="flex items-center gap-1 rounded-full bg-[#F5F5F5] p-0.75"
+            class="flex items-center gap-1 rounded-l bg-[#F5F5F5] p-0.75"
             role="group"
             aria-label="Language selector"
           >
@@ -85,17 +83,16 @@ const isMenuOpen = ref(false)
       >
         <div class="container-site flex flex-col gap-1 py-4">
           <!-- Nav links -->
-          <NuxtLink
+          <a
             v-for="link in navLinks"
             :key="link.key"
-            :to="link.to"
-            class="rounded-md px-3 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-gray-50 hover:text-primary-500"
-            active-class="bg-primary-50 text-primary-500"
+            :href="link.href"
+            class="rounded-md px-3 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-gray-50 hover:text-[#f0441a]"
             style="font-family: 'Outfit', sans-serif"
             @click="isMenuOpen = false"
           >
             {{ t(`nav.${link.key}`) }}
-          </NuxtLink>
+          </a>
 
           <!-- Language switcher row -->
           <div class="mt-3 flex items-center gap-2 border-t border-gray-100 px-3 pt-4">
