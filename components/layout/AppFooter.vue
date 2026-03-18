@@ -1,14 +1,13 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const localePath = useLocalePath()
 
 const year = new Date().getFullYear()
 
 const quickLinks = [
-  { key: 'trainings', to: '/trainings' },
-  { key: 'instructors', to: '/instructors' },
-  { key: 'resources', to: '/resources' },
-  { key: 'contact', to: '/contact' },
+  { key: 'trainings',   href: '/#trainings' },
+  { key: 'instructors', href: '/#instructors' },
+  { key: 'resources',   href: '/#resources' },
+  { key: 'contact',     href: '/#contact' },
 ]
 </script>
 
@@ -20,31 +19,26 @@ const quickLinks = [
         <!-- Logo + description -->
         <div>
           <div class="mb-4">
-            <NuxtLink :to="localePath('/')" class="flex items-center gap-3">
-              <NuxtImg src="/images/logo.png" alt="Wyliodrin Academy" width="48" height="48" loading="lazy" />
-              <span class="text-lg font-bold" style="font-family: 'Space Grotesk', sans-serif">
-                Wyliodrin Academy
-              </span>
-            </NuxtLink>
+            <img src="/images/logo.png" alt="Wyliodrin Academy" class="h-16 w-auto" />
           </div>
           <p class="text-white/60 text-sm leading-relaxed">
-            Professional training in Rust, WebAssembly, and embedded systems with Qualiopi certification.
+            {{ t('footer.description') }}
           </p>
         </div>
 
         <!-- Quick Links -->
         <div>
           <h3 class="font-semibold text-white mb-4" style="font-family: 'Space Grotesk', sans-serif">
-            Quick Links
+            {{ t('footer.quickLinks') }}
           </h3>
           <ul class="space-y-2">
             <li v-for="link in quickLinks" :key="link.key">
-              <NuxtLink
-                :to="localePath(link.to)"
+              <a
+                :href="link.href"
                 class="text-white/60 hover:text-[#f0441a] transition-colors text-sm"
               >
                 {{ t(`nav.${link.key}`) }}
-              </NuxtLink>
+              </a>
             </li>
           </ul>
         </div>
@@ -52,12 +46,12 @@ const quickLinks = [
         <!-- Legal & Compliance -->
         <div>
           <h3 class="font-semibold text-white mb-4" style="font-family: 'Space Grotesk', sans-serif">
-            Legal &amp; Compliance
+            {{ t('footer.legal.title') }}
           </h3>
           <ul class="space-y-2">
             <li>
               <a href="#" class="text-white/60 hover:text-[#f0441a] transition-colors text-sm">
-                Accessibility Statement
+                {{ t('footer.legal.accessibility') }}
               </a>
             </li>
             <li>
@@ -67,7 +61,7 @@ const quickLinks = [
                 rel="noopener noreferrer"
                 class="text-white/60 hover:text-[#f0441a] transition-colors text-sm"
               >
-                Legal Mentions
+                {{ t('footer.legal.mentions') }}
               </a>
             </li>
             <li>
@@ -77,15 +71,17 @@ const quickLinks = [
                 rel="noopener noreferrer"
                 class="text-white/60 hover:text-[#f0441a] transition-colors text-sm"
               >
-                Privacy Policy
+                {{ t('footer.legal.privacy') }}
               </a>
             </li>
             <li>
-              <a href="#" class="text-white/60 hover:text-[#f0441a] transition-colors text-sm">Quality Standards</a>
+              <a href="#" class="text-white/60 hover:text-[#f0441a] transition-colors text-sm">
+                {{ t('footer.legal.quality') }}
+              </a>
             </li>
             <li>
               <a href="#" class="text-white/60 hover:text-[#f0441a] transition-colors text-sm flex items-center gap-2">
-                <span>🎯</span> Qualiopi Certified
+                <span>🎯</span> {{ t('footer.legal.qualiopi') }}
               </a>
             </li>
           </ul>

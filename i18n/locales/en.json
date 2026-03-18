@@ -21,6 +21,16 @@
     }
   },
   "footer": {
+    "description": "Professional training in Rust, WebAssembly, and embedded systems with Qualiopi certification.",
+    "quickLinks": "Quick Links",
+    "legal": {
+      "title": "Legal & Compliance",
+      "accessibility": "Accessibility Statement",
+      "mentions": "Legal Mentions",
+      "privacy": "Privacy Policy",
+      "quality": "Quality Standards",
+      "qualiopi": "Qualiopi Certified"
+    },
     "rights": "All rights reserved."
   }
 }
