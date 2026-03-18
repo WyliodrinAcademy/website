@@ -34,13 +34,13 @@ const _props = withDefaults(
       // ── lang-active (selected locale) ──────────────
       variant === 'lang-active' && [
         'bg-burgundy text-[#FFFFFF] text-xs font-semibold uppercase tracking-wide',
-        'rounded-xl px-3 py-1.5 min-w-9',
+        'rounded-l px-3 py-1.5 min-w-9',
       ],
 
       // ── lang-inactive (unselected locale) ──────────
       variant === 'lang-inactive' && [
         'bg-[#000000] text-white text-xs font-semibold uppercase tracking-wide',
-        'rounded-xl px-3 py-1.5 min-w-9',
+        'rounded-l px-3 py-1.5 min-w-9',
         'hover:text-white/80',
       ],
     ]"
