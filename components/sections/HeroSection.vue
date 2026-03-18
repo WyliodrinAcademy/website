@@ -25,11 +25,11 @@
 
           <!-- CTA buttons -->
           <div class="flex flex-wrap gap-4 pt-4">
-            <UiButton variant="primary">
+            <UiButton as="a" href="#trainings" variant="primary">
               Explore Trainings
               <Icon name="lucide:arrow-right" class="w-5 h-5" />
             </UiButton>
-            <UiButton variant="outline">
+            <UiButton as="a" href="#contact" variant="outline">
               Talk to Us
               <Icon name="lucide:message-circle" class="w-5 h-5" />
             </UiButton>
