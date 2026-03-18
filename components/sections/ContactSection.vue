@@ -16,6 +16,12 @@ const form = reactive({
   company: '',
   message: '',
 })
+
+const submitted = ref(false)
+
+function handleSubmit() {
+  submitted.value = true
+}
 </script>
 
 <template>
@@ -52,55 +58,74 @@ const form = reactive({
           </div>
         </div>
 
-        <!-- Right: contact form -->
+        <!-- Right: contact form / success -->
         <div class="bg-white rounded-2xl p-8 shadow-xl border border-[#d7d7d7]">
-          <form class="space-y-6" @submit.prevent>
-            <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
-              <input
-                v-model="form.name"
-                type="text"
-                required
-                class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
-              <input
-                v-model="form.email"
-                type="email"
-                required
-                class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
-              <input
-                v-model="form.company"
-                type="text"
-                required
-                class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
-              <textarea
-                v-model="form.message"
-                required
-                rows="5"
-                class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all resize-none"
-              />
-            </div>
-            <button
-              type="submit"
-              class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
-            >
-              {{ t('contact.form.submit') }}
-              <Icon name="lucide:send" class="w-5 h-5" />
-            </button>
-          </form>
+          <Transition name="form-fade" mode="out-in">
+            <form v-if="!submitted" key="form" class="space-y-6" @submit.prevent="handleSubmit">
+              <div>
+                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
+                <input
+                  v-model="form.name"
+                  type="text"
+                  required
+                  class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg text-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
+                <input
+                  v-model="form.email"
+                  type="email"
+                  required
+                  class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg text-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
+                <input
+                  v-model="form.company"
+                  type="text"
+                  required
+                  class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg text-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
+                <textarea
+                  v-model="form.message"
+                  required
+                  rows="5"
+                  class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg text-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all resize-none"
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
+              >
+                {{ t('contact.form.submit') }}
+                <Icon name="lucide:send" class="w-5 h-5" />
+              </button>
+            </form>
+
+            <ContactSuccessCard v-else key="success" />
+          </Transition>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.form-fade-enter-active,
+.form-fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.form-fade-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.form-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+</style>

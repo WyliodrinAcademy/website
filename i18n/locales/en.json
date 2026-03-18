@@ -34,6 +34,10 @@
       "company": "Company Name",
       "message": "Message",
       "submit":  "Send Message"
+    },
+    "success": {
+      "title": "Message Sent!",
+      "body":  "Thank you! We'll get back to you soon."
     }
   },
   "footer": {
