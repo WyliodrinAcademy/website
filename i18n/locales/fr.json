@@ -21,6 +21,16 @@
     }
   },
   "footer": {
+    "description": "Formation professionnelle en Rust, WebAssembly et systèmes embarqués avec certification Qualiopi.",
+    "quickLinks": "Liens Rapides",
+    "legal": {
+      "title": "Mentions Légales & Conformité",
+      "accessibility": "Déclaration d'Accessibilité",
+      "mentions": "Mentions Légales",
+      "privacy": "Politique de Confidentialité",
+      "quality": "Critères Qualité",
+      "qualiopi": "Certifié Qualiopi"
+    },
     "rights": "Tous droits réservés."
   }
 }
