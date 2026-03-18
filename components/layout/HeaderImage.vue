@@ -8,7 +8,6 @@ const localePath = useLocalePath()
     class="flex items-center gap-3 select-none no-underline"
     aria-label="Wyliodrin Academy — home"
   >
-    <!-- ── Real logo (activate when file is ready) ─────────────────── -->
     <NuxtImg
       src="/images/logo.png"
       alt="Wyliodrin Academy logo"
@@ -16,6 +15,5 @@ const localePath = useLocalePath()
       width="40"
       loading="eager"
     />
-
   </NuxtLink>
 </template>

@@ -54,25 +54,20 @@
 /* ─── Design tokens ───────────────────────────────────────────────────── */
 
 @theme {
-  /* Primary blue scale */
-  --color-primary-50:  #e6f0ff;
-  --color-primary-100: #cce0ff;
-  --color-primary-200: #99c2ff;
-  --color-primary-300: #66a3ff;
-  --color-primary-400: #3385ff;
-  --color-primary-500: #0066FF;
-  --color-primary-600: #0052cc;
-  --color-primary-700: #003d99;
-  --color-primary-800: #002966;
-  --color-primary-900: #001433;
+  /* Brand palette */
+  --color-burgundy: #560D08;  /* dark brand / lang-active button bg */
+  --color-orange:   #F0441A;  /* primary CTA buttons */
+  --color-red:      #F92D04;  /* section headings h2 */
+  --color-teal:     #66F2E3;  /* level badges, icon accents */
+  --color-cream:    #F9F9F6;  /* off-white body bg, alternate sections */
+  --color-border:   #D7D7D7;  /* card / input borders */
 
   /* Semantic */
   --color-secondary: #1A1A2E;
 
-  /* Header-specific tokens */
-  --color-burgundy: #560D08;  /* lang-active button bg */
-  --color-ink:      #1A1A1A;  /* nav link text */
-  --color-muted:    #666666;  /* globe icon + lang-inactive text */
+  /* Text tokens */
+  --color-ink:   #1A1A1A;  /* headings, nav link text */
+  --color-muted: #666666;  /* body text, labels, globe icon */
 
   /* Typography */
   --font-sans:    'Outfit', ui-sans-serif, system-ui, sans-serif;
@@ -92,7 +87,7 @@
   }
 
   body {
-    @apply bg-white font-sans;
+    @apply bg-cream font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
