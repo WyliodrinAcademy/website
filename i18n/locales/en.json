@@ -40,6 +40,17 @@
       "body":  "Thank you! We'll get back to you soon."
     }
   },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "Access documentation, labs, and compliance materials",
+    "tabs": {
+      "public": "Public Resources",
+      "compliance": "Quality & Compliance"
+    },
+    "search": "Search resources...",
+    "visitResource": "Visit Resource",
+    "noResults": "No resources match your search."
+  },
   "footer": {
     "description": "Professional training in Rust, WebAssembly, and embedded systems with Qualiopi certification.",
     "quickLinks": "Quick Links",

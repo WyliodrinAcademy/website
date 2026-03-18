@@ -40,6 +40,17 @@
       "body":  "Merci ! Nous vous répondrons dans les plus brefs délais."
     }
   },
+  "resources": {
+    "title": "Ressources",
+    "subtitle": "Accédez à la documentation, aux labs et aux matériaux de conformité",
+    "tabs": {
+      "public": "Ressources Publiques",
+      "compliance": "Qualité & Conformité"
+    },
+    "search": "Rechercher des ressources...",
+    "visitResource": "Visiter Ressource",
+    "noResults": "Aucune ressource ne correspond à votre recherche."
+  },
   "footer": {
     "description": "Formation professionnelle en Rust, WebAssembly et systèmes embarqués avec certification Qualiopi.",
     "quickLinks": "Liens Rapides",
