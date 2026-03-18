@@ -16,14 +16,31 @@ const isMenuOpen = ref(false)
 
 async function switchLocale(code: 'en' | 'fr') {
   const scrollY = window.scrollY
-  // Strip hash from both Vue Router state and browser URL so that
-  // when i18n navigates to the new locale URL it won't include the
-  // hash — preventing the browser from auto-scrolling to the anchor.
-  if (router.currentRoute.value.hash) {
-    await router.replace({ hash: '' })
+  // Read hash from the real browser URL — not Vue Router — because a previous
+  // switchLocale may have set it via history.replaceState (bypassing the router).
+  const currentHash = location.hash
+
+  // Strip the hash before setLocale navigates so the browser won't auto-scroll.
+  if (currentHash) {
+    // Remove it from the live URL so setLocale starts from a clean path.
+    history.replaceState(null, '', location.pathname + location.search)
+    // Sync Vue Router if it also has a hash (first switch from a normal nav).
+    if (router.currentRoute.value.hash) {
+      await router.replace({ hash: '' })
+    }
   }
-  await setLocale(code)
+
+  await setLocale(code) // navigates to /fr/ or /
   await nextTick()
+
+  // Put the hash back in the URL bar without triggering browser scroll.
+  // history.replaceState bypasses Vue Router + native scroll-to-anchor.
+  // Ensure trailing slash before hash (e.g. /fr/#instructors, not /fr#instructors).
+  if (currentHash) {
+    const path = location.pathname.replace(/\/?$/, '/')
+    history.replaceState(null, '', path + currentHash)
+  }
+
   window.scrollTo({ top: scrollY, behavior: 'instant' })
 }
 </script>
