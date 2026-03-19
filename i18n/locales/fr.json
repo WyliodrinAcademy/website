@@ -195,5 +195,11 @@
       "qualiopi": "Qualiopi Certified"
     },
     "rights": "Tous droits réservés."
+  },
+  "error": {
+    "code": "404",
+    "title": "Page introuvable",
+    "subtitle": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "cta": "Retour à l'accueil"
   }
 }

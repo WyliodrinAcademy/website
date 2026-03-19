@@ -195,5 +195,11 @@
       "qualiopi": "Qualiopi Certified"
     },
     "rights": "All rights reserved."
+  },
+  "error": {
+    "code": "404",
+    "title": "Page Not Found",
+    "subtitle": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to Home"
   }
 }
