@@ -1,16 +1,37 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   emoji: string
   title: string
   subtitle: string
-  index?: number
+  delay?: number
 }>()
+
+const cardRef = ref<HTMLElement>()
+const isVisible = ref(false)
+
+onMounted(() => {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true
+        io.disconnect()
+      }
+    },
+    { threshold: 0.2 },
+  )
+  if (cardRef.value) io.observe(cardRef.value)
+})
 </script>
 
 <template>
   <div
-    class="card-slide-in flex items-center gap-4 bg-white rounded-xl p-4 border border-[#d7d7d7] shadow-sm hover:translate-x-2 transition-transform duration-200"
-    :style="{ animationDelay: `${(index ?? 0) * 150}ms` }"
+    ref="cardRef"
+    class="flex items-center gap-4 bg-white rounded-xl p-4 border border-[#d7d7d7] shadow-sm hover:translate-x-2"
+    :class="isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'"
+    :style="{
+      transition: 'opacity 500ms ease-out, transform 500ms ease-out',
+      transitionDelay: isVisible ? `${props.delay ?? 0}ms` : '0ms',
+    }"
   >
     <div class="text-3xl flex-shrink-0">{{ emoji }}</div>
     <div>
@@ -19,15 +40,3 @@ defineProps<{
     </div>
   </div>
 </template>
-
-<style scoped>
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-.card-slide-in {
-  animation: slideInLeft 0.5s ease forwards;
-  opacity: 0;
-}
-</style>

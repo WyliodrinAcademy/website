@@ -22,6 +22,28 @@ const submitted = ref(false)
 function handleSubmit() {
   submitted.value = true
 }
+
+// Scroll-triggered entrance animations
+const leftRef = ref<HTMLElement>()
+const leftVisible = ref(false)
+
+const formRef = ref<HTMLElement>()
+const formVisible = ref(false)
+
+onMounted(() => {
+  const observe = (el: HTMLElement | undefined, setter: () => void) => {
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { setter(); io.disconnect() }
+      },
+      { threshold: 0.2 },
+    )
+    io.observe(el)
+  }
+  observe(leftRef.value,  () => { leftVisible.value  = true })
+  observe(formRef.value,  () => { formVisible.value  = true })
+})
 </script>
 
 <template>
@@ -29,7 +51,11 @@ function handleSubmit() {
     <div class="max-w-[1240px] mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <!-- Left: info -->
-        <div class="space-y-6">
+        <div
+          ref="leftRef"
+          class="space-y-6 transition-all duration-500 ease-out"
+          :class="leftVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'"
+        >
           <div>
             <h2 class="text-4xl font-bold text-[#f92d04] mb-4" style="font-family: 'Space Grotesk', sans-serif">
               {{ t('contact.heading') }}
@@ -51,7 +77,7 @@ function handleSubmit() {
                   :emoji="perk.emoji"
                   :title="perk.title"
                   :subtitle="perk.subtitle"
-                  :index="i"
+                  :delay="i * 150"
                 />
               </div>
             </div>
@@ -59,7 +85,11 @@ function handleSubmit() {
         </div>
 
         <!-- Right: contact form / success -->
-        <div class="bg-white rounded-2xl p-8 shadow-xl border border-[#d7d7d7]">
+        <div
+          ref="formRef"
+          class="bg-white rounded-2xl p-8 shadow-xl border border-[#d7d7d7] transition-all duration-500 ease-out"
+          :class="formVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'"
+        >
           <Transition name="form-fade" mode="out-in">
             <form v-if="!submitted" key="form" class="space-y-6" @submit.prevent="handleSubmit">
               <div>

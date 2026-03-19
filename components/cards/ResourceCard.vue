@@ -7,17 +7,34 @@ const props = defineProps<{
   description: string
   href: string
   delay?: number
-  visible?: boolean
 }>()
+
+const cardRef = ref<HTMLElement>()
+const isVisible = ref(false)
+
+onMounted(() => {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true
+        io.disconnect()
+      }
+    },
+    { threshold: 0.15 },
+  )
+  if (cardRef.value) io.observe(cardRef.value)
+})
 </script>
 
 <template>
   <div
+    ref="cardRef"
     class="resource-card bg-[#f9f9f6] rounded-xl border border-[#d7d7d7] overflow-hidden
-           hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 group"
+           hover:shadow-lg hover:-translate-y-1.5 group"
+    :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
     :style="{
-      animationDelay: `${props.delay ?? 0}ms`,
-      animationPlayState: (props.visible ?? true) ? 'running' : 'paused',
+      transition: 'opacity 500ms ease-out, transform 500ms ease-out, box-shadow 300ms ease-out',
+      transitionDelay: isVisible ? `${props.delay ?? 0}ms` : '0ms',
     }"
   >
     <div class="p-6">
@@ -36,13 +53,3 @@ const props = defineProps<{
     </div>
   </div>
 </template>
-
-<style scoped>
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.resource-card {
-  animation: fadeUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-</style>

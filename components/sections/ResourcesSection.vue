@@ -119,20 +119,31 @@ const cardData: Record<string, Record<string, ResourceCard[]>> = {
   },
 }
 
+// Per-element IntersectionObservers
 const headingRef = ref<HTMLElement>()
-const sectionVisible = ref(false)
+const headingVisible = ref(false)
 
-onMounted(() => {
+const tabsRef = ref<HTMLElement>()
+const tabsVisible = ref(false)
+
+const searchRef = ref<HTMLElement>()
+const searchVisible = ref(false)
+
+function makeIO(el: HTMLElement | undefined, setter: () => void, threshold = 0.5) {
+  if (!el) return
   const io = new IntersectionObserver(
     ([entry]) => {
-      if (entry.isIntersecting) {
-        sectionVisible.value = true
-        io.disconnect()
-      }
+      if (entry.isIntersecting) { setter(); io.disconnect() }
     },
-    { threshold: 0.5 },
+    { threshold },
   )
-  if (headingRef.value) io.observe(headingRef.value)
+  io.observe(el)
+}
+
+onMounted(() => {
+  makeIO(headingRef.value, () => { headingVisible.value = true })
+  makeIO(tabsRef.value,    () => { tabsVisible.value    = true })
+  makeIO(searchRef.value,  () => { searchVisible.value  = true })
 })
 
 const activeResources = computed(() => {
@@ -156,7 +167,7 @@ const filteredResources = computed(() => {
       <div
         ref="headingRef"
         class="transition-all duration-500 ease-out"
-        :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        :class="headingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
       >
         <UiSectionHeading
           :title="t('resources.title')"
@@ -167,9 +178,9 @@ const filteredResources = computed(() => {
 
       <!-- Tab filters -->
       <div
+        ref="tabsRef"
         class="mb-8 transition-all duration-500 ease-out"
-        :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
-        style="transition-delay: 100ms"
+        :class="tabsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
       >
         <div class="flex flex-wrap gap-3 justify-center">
           <button
@@ -191,9 +202,9 @@ const filteredResources = computed(() => {
 
       <!-- Search -->
       <div
+        ref="searchRef"
         class="mb-8 max-w-2xl mx-auto transition-all duration-500 ease-out"
-        :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
-        style="transition-delay: 200ms"
+        :class="searchVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
       >
         <div class="relative">
           <Icon name="lucide:search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666]" />
@@ -217,7 +228,6 @@ const filteredResources = computed(() => {
           :description="res.description"
           :href="res.href"
           :delay="i * 100"
-          :visible="sectionVisible"
         />
       </div>
 
