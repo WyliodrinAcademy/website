@@ -34,6 +34,42 @@ npm run dev   # http://localhost:3000 (falls back to :3001 if port taken)
 | `--color-teal` | `#66F2E3` | Accents, success badges |
 | `--color-cream` | `#F9F9F6` | Off-white backgrounds |
 
+### Static assets (`public/`)
+
+Images and expert photos are already present. The following files still need to be created before going live:
+
+**`public/legal/`**
+| File | Linked from |
+|------|------------|
+| `mentions.pdf` | Footer → Legal Mentions |
+| `privacy.pdf` | Footer → Privacy Policy |
+
+**`public/quality/`**
+| File | Linked from |
+|------|------------|
+| `qualiopi-certification.pdf` | Resources → Compliance tab |
+| `regulations.pdf` | Resources → Compliance tab |
+| `qa-process.pdf` | Resources → Compliance tab |
+
+**`public/pdfs/`** — one PDF per training program
+| File | Training |
+|------|---------|
+| `rust-fundamentals-short.pdf` | Rust Fundamentals (Short Format) |
+| `rust-fundamentals-project.pdf` | Rust Fundamentals (With Final Project) |
+| `rust-fundamentals-extended.pdf` | Rust Fundamentals (Extended Format) |
+| `embedded-rust.pdf` | Embedded Development in Rust |
+| `async-rust.pdf` | Asynchronous Rust |
+| `web-rust.pdf` | Web Development in Rust |
+| `tauri-desktop.pdf` | Desktop Applications with Tauri |
+| `rust-interop-c.pdf` | Rust Interoperability with C/C++ |
+| `rust-interop-python.pdf` | Rust Interoperability with Python |
+| `tdd-rust.pdf` | Test-Driven Development in Rust |
+| `debugging-rust.pdf` | Debugging in Rust |
+| `wasm-rust.pdf` | WebAssembly with Rust |
+| `performance-rust.pdf` | Performance Evaluation in Rust |
+
+---
+
 ### Animation conventions
 - **On-load (hero)**: scoped `@keyframes` with `animation-fill-mode: both` and staggered `animation-delay` utility classes (`.hero-delay-100` … `.hero-delay-600`). No JS, no IntersectionObserver.
 - **On-scroll (cards/sections)**: IntersectionObserver toggles `opacity-0 translate-y-*` → `opacity-100 translate-y-0` Tailwind classes; stagger via index × 150 ms.
