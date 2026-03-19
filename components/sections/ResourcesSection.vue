@@ -119,7 +119,7 @@ const cardData: Record<string, Record<string, ResourceCard[]>> = {
   },
 }
 
-const sectionRef = ref<HTMLElement>()
+const headingRef = ref<HTMLElement>()
 const sectionVisible = ref(false)
 
 onMounted(() => {
@@ -130,9 +130,9 @@ onMounted(() => {
         io.disconnect()
       }
     },
-    { threshold: 0.1 },
+    { threshold: 0.5 },
   )
-  if (sectionRef.value) io.observe(sectionRef.value)
+  if (headingRef.value) io.observe(headingRef.value)
 })
 
 const activeResources = computed(() => {
@@ -150,10 +150,11 @@ const filteredResources = computed(() => {
 </script>
 
 <template>
-  <section ref="sectionRef" id="resources" class="py-20 bg-white">
+  <section id="resources" class="py-20 bg-white">
     <div class="max-w-[1240px] mx-auto px-6">
       <!-- Heading -->
       <div
+        ref="headingRef"
         class="transition-all duration-500 ease-out"
         :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
       >
