@@ -29,6 +29,7 @@ function measureTrack() {
 onMounted(async () => {
   await nextTick()
   measureTrack()
+  setupAnimations()
 })
 
 // Recompute if locale changes (labels may affect card width)
@@ -36,6 +37,29 @@ watch(locale, async () => {
   await nextTick()
   measureTrack()
 })
+
+const headingRef = ref<HTMLElement>()
+const headingVisible = ref(false)
+const ctaRef = ref<HTMLElement>()
+const ctaVisible = ref(false)
+
+function setupAnimations() {
+  const observe = (el: HTMLElement | undefined, setVisible: () => void) => {
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible()
+          io.disconnect()
+        }
+      },
+      { threshold: 0.15 },
+    )
+    io.observe(el)
+  }
+  observe(headingRef.value, () => { headingVisible.value = true })
+  observe(ctaRef.value,     () => { ctaVisible.value = true })
+}
 </script>
 
 <template>
@@ -48,7 +72,11 @@ watch(locale, async () => {
 
     <div class="relative z-10">
       <!-- Heading -->
-      <div class="text-center mb-12 px-6">
+      <div
+        ref="headingRef"
+        class="text-center mb-12 px-6 transition-all duration-500 ease-out"
+        :class="headingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+      >
         <h2 class="text-4xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif">{{ t('impact.heading') }}</h2>
         <p class="text-xl text-white/90 max-w-3xl mx-auto">{{ t('impact.subtitle') }}</p>
       </div>
@@ -71,7 +99,12 @@ watch(locale, async () => {
       </div>
 
       <!-- CTA -->
-      <div class="text-center mt-12 px-6">
+      <div
+        ref="ctaRef"
+        class="text-center mt-12 px-6 transition-all duration-500 ease-out"
+        :class="ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        style="transition-delay: 200ms"
+      >
         <p class="text-lg text-white/90 mb-6">{{ t('impact.cta') }}</p>
         <a href="/#contact">
           <UiButton variant="ghost">{{ t('impact.button') }}</UiButton>

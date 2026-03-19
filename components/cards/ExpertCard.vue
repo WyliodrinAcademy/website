@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IExpertType } from '~/types/index'
 
-defineProps<{
+const props = defineProps<{
   expert: IExpertType
   index?: number
 }>()
@@ -9,12 +9,36 @@ defineProps<{
 defineEmits<{
   click: []
 }>()
+
+const cardRef = ref<HTMLElement>()
+const isVisible = ref(false)
+
+onMounted(() => {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true
+        io.disconnect()
+      }
+    },
+    { threshold: 0.1 },
+  )
+  if (cardRef.value) io.observe(cardRef.value)
+})
+
+const cardDelay = computed(() => (props.index ?? 0) * 150)
+const badgeDelay = computed(() => cardDelay.value + 350)
 </script>
 
 <template>
   <div
-    class="card-fade-up group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#d7d7d7] cursor-pointer"
-    :style="{ '--delay': (index ?? 0) * 150 }"
+    ref="cardRef"
+    class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-[#d7d7d7] cursor-pointer"
+    :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+    :style="{
+      transition: 'opacity 500ms ease-out, transform 500ms ease-out, box-shadow 300ms ease-out',
+      transitionDelay: isVisible ? `${cardDelay}ms` : '0ms',
+    }"
     @click="$emit('click')"
   >
     <!-- Photo area -->
@@ -34,7 +58,9 @@ defineEmits<{
         :href="expert.linkedinUrl"
         target="_blank"
         rel="noopener noreferrer"
-        class="absolute top-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200"
+        class="linkedin-badge absolute top-4 right-4 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110"
+        :class="isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"
+        :style="{ transitionDelay: isVisible ? `${badgeDelay}ms` : '0ms' }"
         @click.stop
       >
         <Icon name="lucide:linkedin" class="w-6 h-6 text-[#0077b5]" />
@@ -56,14 +82,8 @@ defineEmits<{
 </template>
 
 <style scoped>
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.card-fade-up {
-  animation: fadeUp 0.5s ease forwards;
-  opacity: 0;
-  animation-delay: calc(var(--delay) * 1ms);
+.linkedin-badge {
+  transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity   200ms ease-out;
 }
 </style>

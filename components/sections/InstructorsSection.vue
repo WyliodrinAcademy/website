@@ -30,16 +30,38 @@ function openDialog(expert: IExpertType) {
   selectedExpert.value = expert
   dialogOpen.value = true
 }
+
+const headingRef = ref<HTMLElement>()
+const headingVisible = ref(false)
+
+onMounted(() => {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        headingVisible.value = true
+        io.disconnect()
+      }
+    },
+    { threshold: 0.15 },
+  )
+  if (headingRef.value) io.observe(headingRef.value)
+})
 </script>
 
 <template>
   <section id="instructors" class="py-20 bg-[#f9f9f6]">
     <div class="max-w-[1240px] mx-auto px-6">
-      <UiSectionHeading
-        :title="t('instructors.heading')"
-        :subtitle="t('instructors.subtitle')"
-        align="center"
-      />
+      <div
+        ref="headingRef"
+        class="transition-all duration-500 ease-out"
+        :class="headingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+      >
+        <UiSectionHeading
+          :title="t('instructors.heading')"
+          :subtitle="t('instructors.subtitle')"
+          align="center"
+        />
+      </div>
 
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <ExpertCard
