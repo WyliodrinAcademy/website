@@ -15,7 +15,7 @@ defineProps<{
       <div class="text-4xl font-bold text-white" style="font-family: 'Space Grotesk', sans-serif">
         {{ value }}
       </div>
-      <p class="text-lg font-medium text-white/90">{{ label }}</p>
+      <p class="text-lg font-semibold text-white/90">{{ label }}</p>
     </div>
   </div>
 </template>

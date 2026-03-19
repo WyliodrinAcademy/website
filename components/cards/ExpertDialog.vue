@@ -28,10 +28,10 @@ const { t } = useI18n()
     <Transition name="dialog-modal">
       <div
         v-if="open && expert"
-        class="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-4"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4"
         @click.self="$emit('close')"
       >
-        <div class="w-full md:max-w-2xl bg-white rounded-t-2xl md:rounded-2xl shadow-2xl overflow-hidden">
+        <div class="w-full md:max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden">
           <!-- Header with photo + gradient -->
           <div class="relative h-64 bg-gradient-to-br from-[#560d08] to-[#ba321f]">
             <img
@@ -59,7 +59,7 @@ const { t } = useI18n()
               >
                 {{ expert.name }}
               </h2>
-              <p class="text-[#66f2e3] font-medium text-lg">{{ expert.role }}</p>
+              <p class="text-[#66f2e3] font-semibold text-lg">{{ expert.role }}</p>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ const { t } = useI18n()
               :href="expert.linkedinUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="w-full px-6 py-4 bg-[#0077b5] text-white rounded-lg font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:bg-[#006a9e] transition-all"
+              class="w-full px-6 py-4 bg-[#0077b5] text-white rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:bg-[#006a9e] transition-all"
             >
               <Icon name="lucide:linkedin" class="w-5 h-5" />
               {{ t('instructors.viewLinkedin') }}

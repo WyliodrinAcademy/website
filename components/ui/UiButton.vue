@@ -20,7 +20,7 @@ const props = withDefaults(
     :target="target"
     :type="as === 'button' ? type : undefined"
     :class="[
-      'inline-flex items-center justify-center gap-2 font-medium transition-all cursor-pointer',
+      'inline-flex items-center justify-center gap-2 font-semibold transition-all cursor-pointer',
 
       variant === 'primary' && [
         'px-8 py-4 bg-[#f0441a] text-white rounded-lg shadow-lg',
@@ -33,8 +33,8 @@ const props = withDefaults(
       ],
 
       variant === 'outline' && [
-        'px-4 py-2 bg-white text-[#560d08] rounded-lg border border-[#d7d7d7]',
-        'hover:bg-[#560d08] hover:text-white hover:border-[#560d08] transition-all',
+        'px-4 py-2 bg-white text-[#560d08] rounded-lg border-2 border-[#560d08]',
+        'hover:bg-[#560d08] hover:text-white transition-all',
       ],
 
       variant === 'ghost' && [

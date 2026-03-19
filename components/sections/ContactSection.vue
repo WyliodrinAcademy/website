@@ -93,7 +93,7 @@ onMounted(() => {
           <Transition name="form-fade" mode="out-in">
             <form v-if="!submitted" key="form" class="space-y-6" @submit.prevent="handleSubmit">
               <div>
-                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
+                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
                 <input
                   v-model="form.name"
                   type="text"
@@ -102,7 +102,7 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
+                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
                 <input
                   v-model="form.email"
                   type="email"
@@ -111,7 +111,7 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
+                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
                 <input
                   v-model="form.company"
                   type="text"
@@ -120,7 +120,7 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
+                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
                 <textarea
                   v-model="form.message"
                   required
@@ -130,7 +130,7 @@ onMounted(() => {
               </div>
               <button
                 type="submit"
-                class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-medium flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
+                class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
               >
                 {{ t('contact.form.submit') }}
                 <Icon name="lucide:send" class="w-5 h-5" />

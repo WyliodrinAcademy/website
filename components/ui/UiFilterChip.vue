@@ -11,7 +11,7 @@ withDefaults(
 <template>
   <button
     :class="[
-      'px-5 py-2.5 rounded-full font-medium transition-all flex items-center gap-2',
+      'px-5 py-2.5 rounded-full font-semibold transition-all flex items-center gap-2',
       active && activeColor === 'red' && 'bg-[#f92d04] text-white shadow-lg',
       active && activeColor === 'orange' && 'bg-[#f0441a] text-white shadow-lg',
       !active && 'bg-white border border-[#d7d7d7] text-[#666] hover:border-[#f92d04]',

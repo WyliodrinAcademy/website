@@ -42,12 +42,12 @@ const badgeDelay = computed(() => cardDelay.value + 350)
     @click="$emit('click')"
   >
     <!-- Photo area -->
-    <div class="relative h-80 overflow-hidden bg-[#e8e4dd]">
+    <div class="relative h-56 md:h-80 overflow-hidden bg-[#e8e4dd]">
       <img
         v-if="expert.photoUrl"
         :src="expert.photoUrl"
         :alt="expert.name"
-        class="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500"
+        class="w-full h-full object-cover object-center md:object-top group-hover:scale-105 transition-all duration-500"
       />
       <div v-else class="w-full h-full flex items-center justify-center">
         <Icon name="lucide:user" class="w-24 h-24 text-[#c4bdb5]" />
@@ -75,7 +75,7 @@ const badgeDelay = computed(() => cardDelay.value + 350)
       >
         {{ expert.name }}
       </h3>
-      <p class="text-[#f0441a] font-medium mb-3">{{ expert.role }}</p>
+      <p class="text-[#f0441a] font-semibold mb-3">{{ expert.role }}</p>
       <p class="text-[#666] leading-relaxed line-clamp-3">{{ expert.aboutMe }}</p>
     </div>
   </div>

@@ -38,7 +38,7 @@ onMounted(() => {
           :class="footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
         >
           <div class="mb-4">
-            <img src="/images/logo.png" alt="Wyliodrin Academy" class="h-16 w-auto" />
+            <img src="/images/logo_white.png" alt="Wyliodrin Academy" class="h-16 w-auto" />
           </div>
           <p class="text-white/60 text-sm leading-relaxed">
             {{ t('footer.description') }}
@@ -52,7 +52,7 @@ onMounted(() => {
           :style="{ transitionDelay: footerVisible ? '100ms' : '0ms' }"
         >
           <h3
-            class="font-semibold text-white mb-4"
+            class="text-xl font-semibold text-white mb-4"
             style="font-family: 'Space Grotesk', sans-serif"
           >
             {{ t('footer.quickLinks') }}
@@ -76,7 +76,7 @@ onMounted(() => {
           :style="{ transitionDelay: footerVisible ? '200ms' : '0ms' }"
         >
           <h3
-            class="font-semibold text-white mb-4"
+            class="text-xl font-semibold text-white mb-4"
             style="font-family: 'Space Grotesk', sans-serif"
           >
             {{ t('footer.legal.title') }}

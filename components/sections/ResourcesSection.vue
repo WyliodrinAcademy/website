@@ -187,7 +187,7 @@ const filteredResources = computed(() => {
             v-for="tab in tabs"
             :key="tab.id"
             :class="[
-              'px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2',
+              'px-6 py-3 rounded-xl font-semibold transition-all flex items-center gap-2',
               activeTab === tab.id
                 ? 'bg-[#560d08] text-white shadow-lg'
                 : 'bg-[#f9f9f6] text-[#666] hover:bg-[#f5f5f5] border border-[#d7d7d7]',

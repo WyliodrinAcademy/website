@@ -22,7 +22,7 @@ const displayLabel = computed(() => {
 <template>
   <span
     :class="[
-      'inline-block px-3 py-1 rounded-full text-xs font-medium',
+      'inline-block px-3 py-1 rounded-full text-xs font-semibold',
 
       variant === 'level' && level === 'Beginner' && 'bg-[#66f2e3]/20 text-[#1a1a1a] border border-[#66f2e3]',
       variant === 'level' && level === 'Intermediate' && 'bg-amber-50 text-amber-800 border border-amber-300',
