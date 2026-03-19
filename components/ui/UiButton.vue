@@ -33,7 +33,7 @@ const props = withDefaults(
       ],
 
       variant === 'outline' && [
-        'px-4 py-2 bg-white text-[#560d08] rounded-lg border-2 border-[#560d08]',
+        'px-8 py-4 bg-white text-[#560d08] rounded-lg border-2 border-[#560d08]',
         'hover:bg-[#560d08] hover:text-white transition-all',
       ],
 

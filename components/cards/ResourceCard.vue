@@ -46,10 +46,15 @@ onMounted(() => {
         {{ title }}
       </h3>
       <p class="text-[#666] leading-relaxed mb-4">{{ description }}</p>
-      <UiButton variant="outline" as="a" :href="href" target="_blank">
+      <a
+        :href="href"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 font-semibold text-sm text-[#560d08] border border-[#d7d7d7] rounded-lg px-4 py-2 hover:border-[#560d08] transition-all"
+      >
         {{ t('resources.visitResource') }}
         <Icon name="lucide:external-link" class="w-4 h-4" />
-      </UiButton>
+      </a>
     </div>
   </div>
 </template>

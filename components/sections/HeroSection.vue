@@ -6,7 +6,7 @@
         <div class="hero-slide-left space-y-6">
           <!-- Qualiopi badge -->
           <div class="hero-fade-up hero-delay-100 inline-block px-4 py-2 bg-[#560d08] rounded-full">
-            <span class="text-white text-sm font-medium">{{ t('home.hero.badge') }}</span>
+            <span class="text-white text-sm font-semibold">{{ t('home.hero.badge') }}</span>
           </div>
 
           <!-- Heading -->

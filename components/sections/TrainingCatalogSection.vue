@@ -358,7 +358,7 @@ const displayedTrainings = computed(() =>
         <div class="mb-6">
           <div class="flex items-center gap-2 mb-3">
             <Icon name="lucide:funnel" class="w-5 h-5 text-[#666]" />
-            <span class="text-sm font-medium text-[#666]">{{ t('trainings.filters.category') }}</span>
+            <span class="text-sm font-semibold text-[#666]">{{ t('trainings.filters.category') }}</span>
           </div>
           <div class="flex flex-wrap gap-3">
             <UiFilterChip
@@ -376,7 +376,7 @@ const displayedTrainings = computed(() =>
         <!-- Level filter -->
         <div>
           <div class="flex items-center gap-2 mb-3">
-            <span class="text-sm font-medium text-[#666]">{{ t('trainings.filters.level') }}</span>
+            <span class="text-sm font-semibold text-[#666]">{{ t('trainings.filters.level') }}</span>
           </div>
           <div class="flex flex-wrap gap-3">
             <UiFilterChip
