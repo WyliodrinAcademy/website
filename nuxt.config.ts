@@ -36,6 +36,17 @@ export default defineNuxtConfig({
     strict: true,
   },
 
+  // Static site generation for GitHub Pages.
+  // - Generates .output/public/ with pre-rendered HTML for / and /fr/
+  // - Adds .nojekyll so GitHub Pages doesn't strip _nuxt/ assets
+  // - Generates 404.html for SPA fallback (handles deep links & i18n routes)
+  // Base URL: set NUXT_APP_BASE_URL env var when deploying to a project page
+  // (e.g. https://org.github.io/repo-name/ → set it to /repo-name/).
+  // Leave unset for custom domains or user/org pages (defaults to /).
+  nitro: {
+    preset: 'github-pages',
+  },
+
   compatibilityDate: '2024-11-01',
 
   vite: {
