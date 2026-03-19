@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://wyliodrinacademy.github.io',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://wyliodrinacademy.github.io/website',
     },
   },
 

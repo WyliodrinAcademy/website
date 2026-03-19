@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wyliodrinacademy.github.io/sitemap.xml
+Sitemap: https://wyliodrinacademy.github.io/website/sitemap.xml
