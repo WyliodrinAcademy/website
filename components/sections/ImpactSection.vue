@@ -57,9 +57,13 @@ function setupAnimations() {
     )
     io.observe(el)
   }
-  observe(headingRef.value, () => { headingVisible.value = true })
-  observe(ctaRef.value,     () => { ctaVisible.value = true })
+  observe(headingRef.value,  () => { headingVisible.value = true })
+  observe(ctaRef.value,      () => { ctaVisible.value = true })
+  observe(marqueeRef.value,  () => { marqueeVisible.value = true })
 }
+
+const marqueeRef = ref<HTMLElement>()
+const marqueeVisible = ref(false)
 </script>
 
 <template>
@@ -82,7 +86,12 @@ function setupAnimations() {
       </div>
 
       <!-- Marquee ticker -->
-      <div class="relative overflow-hidden">
+      <div
+        ref="marqueeRef"
+        class="relative overflow-hidden transition-all duration-700 ease-out"
+        :class="marqueeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        style="transition-delay: 100ms"
+      >
         <div
           ref="trackRef"
           class="marquee-track flex whitespace-nowrap"
@@ -116,7 +125,7 @@ function setupAnimations() {
 
 <style scoped>
 .marquee-track {
-  animation: marquee 15s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 /* Each card owns its right-margin so the loop offset is predictable */
