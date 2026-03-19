@@ -42,7 +42,7 @@ const badgeDelay = computed(() => cardDelay.value + 350)
     @click="$emit('click')"
   >
     <!-- Photo area -->
-    <div class="relative h-56 md:h-80 overflow-hidden bg-[#e8e4dd]">
+    <div class="relative h-80 overflow-hidden bg-[#e8e4dd]">
       <img
         v-if="expert.photoUrl"
         :src="expert.photoUrl"
