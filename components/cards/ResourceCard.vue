@@ -1,12 +1,13 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-defineProps<{
+const props = defineProps<{
   category: string
   title: string
   description: string
   href: string
   delay?: number
+  visible?: boolean
 }>()
 </script>
 
@@ -14,7 +15,10 @@ defineProps<{
   <div
     class="resource-card bg-[#f9f9f6] rounded-xl border border-[#d7d7d7] overflow-hidden
            hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 group"
-    :style="{ animationDelay: `${delay ?? 0}ms` }"
+    :style="{
+      animationDelay: `${props.delay ?? 0}ms`,
+      animationPlayState: (props.visible ?? true) ? 'running' : 'paused',
+    }"
   >
     <div class="p-6">
       <UiBadge variant="category" :label="category" class="mb-3" />

@@ -119,6 +119,22 @@ const cardData: Record<string, Record<string, ResourceCard[]>> = {
   },
 }
 
+const sectionRef = ref<HTMLElement>()
+const sectionVisible = ref(false)
+
+onMounted(() => {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        sectionVisible.value = true
+        io.disconnect()
+      }
+    },
+    { threshold: 0.1 },
+  )
+  if (sectionRef.value) io.observe(sectionRef.value)
+})
+
 const activeResources = computed(() => {
   const lang = locale.value === 'fr' ? 'fr' : 'en'
   return cardData[activeTab.value]?.[lang] ?? []
@@ -134,16 +150,26 @@ const filteredResources = computed(() => {
 </script>
 
 <template>
-  <section id="resources" class="py-20 bg-white">
+  <section ref="sectionRef" id="resources" class="py-20 bg-white">
     <div class="max-w-[1240px] mx-auto px-6">
-      <UiSectionHeading
-        :title="t('resources.title')"
-        :subtitle="t('resources.subtitle')"
-        align="center"
-      />
+      <!-- Heading -->
+      <div
+        class="transition-all duration-500 ease-out"
+        :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+      >
+        <UiSectionHeading
+          :title="t('resources.title')"
+          :subtitle="t('resources.subtitle')"
+          align="center"
+        />
+      </div>
 
       <!-- Tab filters -->
-      <div class="mb-8">
+      <div
+        class="mb-8 transition-all duration-500 ease-out"
+        :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        style="transition-delay: 100ms"
+      >
         <div class="flex flex-wrap gap-3 justify-center">
           <button
             v-for="tab in tabs"
@@ -163,7 +189,11 @@ const filteredResources = computed(() => {
       </div>
 
       <!-- Search -->
-      <div class="mb-8 max-w-2xl mx-auto">
+      <div
+        class="mb-8 max-w-2xl mx-auto transition-all duration-500 ease-out"
+        :class="sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        style="transition-delay: 200ms"
+      >
         <div class="relative">
           <Icon name="lucide:search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#666]" />
           <input
@@ -186,6 +216,7 @@ const filteredResources = computed(() => {
           :description="res.description"
           :href="res.href"
           :delay="i * 100"
+          :visible="sectionVisible"
         />
       </div>
 
