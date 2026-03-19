@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
+const asset = usePublicUrl()
 
 const tabs = computed(() => [
   { id: 'public', label: t('resources.tabs.public'), icon: 'lucide:file-text' },
@@ -81,19 +82,19 @@ const cardData: Record<string, Record<string, ResourceCard[]>> = {
         category: 'Compliance',
         title: 'Qualiopi Certification',
         description: 'Our Qualiopi certification documents and quality standards.',
-        href: '/quality/qualiopi-certification.pdf',
+        href: asset('/quality/qualiopi-certification.pdf'),
       },
       {
         category: 'Compliance',
         title: 'Training Regulations',
         description: 'Internal regulations for training participants.',
-        href: '/quality/regulations.pdf',
+        href: asset('/quality/regulations.pdf'),
       },
       {
         category: 'Compliance',
         title: 'Quality Assurance Process',
         description: 'Our quality assurance methodology and continuous improvement process.',
-        href: '/quality/qa-process.pdf',
+        href: asset('/quality/qa-process.pdf'),
       },
     ],
     fr: [

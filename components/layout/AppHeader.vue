@@ -2,11 +2,11 @@
 const { t, locale, locales, setLocale } = useI18n()
 
 const navLinks = [
-  { key: 'trainings', href: '/#trainings' },
-  { key: 'instructors', href: '/#instructors' },
-  { key: 'resources', href: '/#resources' },
-  { key: 'our_impact', href: '/#our-impact' },
-  { key: 'contact', href: '/#contact' },
+  { key: 'trainings', href: '#trainings' },
+  { key: 'instructors', href: '#instructors' },
+  { key: 'resources', href: '#resources' },
+  { key: 'our_impact', href: '#our-impact' },
+  { key: 'contact', href: '#contact' },
 ]
 
 const allLocales = computed(() => locales.value as Array<{ code: string; name: string }>)

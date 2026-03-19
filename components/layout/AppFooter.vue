@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const asset = usePublicUrl()
 
 const year = new Date().getFullYear()
 
 const quickLinks = [
-  { key: 'trainings', href: '/#trainings' },
-  { key: 'instructors', href: '/#instructors' },
-  { key: 'resources', href: '/#resources' },
-  { key: 'contact', href: '/#contact' },
+  { key: 'trainings', href: '#trainings' },
+  { key: 'instructors', href: '#instructors' },
+  { key: 'resources', href: '#resources' },
+  { key: 'contact', href: '#contact' },
 ]
 
 const footerRef = ref<HTMLElement>()
@@ -89,7 +90,7 @@ onMounted(() => {
             </li>
             <li>
               <a
-                href="/legal/mentions.pdf"
+                :href="asset('/legal/mentions.pdf')"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-white/60 hover:text-[#f0441a] transition-colors text-sm"
@@ -99,7 +100,7 @@ onMounted(() => {
             </li>
             <li>
               <a
-                href="/legal/privacy.pdf"
+                :href="asset('/legal/privacy.pdf')"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-white/60 hover:text-[#f0441a] transition-colors text-sm"

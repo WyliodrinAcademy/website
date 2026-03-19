@@ -2,6 +2,7 @@
 import type { IExpertType } from '~/types/index'
 
 const { t, locale } = useI18n()
+const asset = usePublicUrl()
 
 const animationKey = ref(0)
 watch(locale, () => { animationKey.value++ })
@@ -11,14 +12,14 @@ const experts = computed<IExpertType[]>(() => [
     name: t('instructors.experts.alexandru.name'),
     role: t('instructors.experts.alexandru.role'),
     aboutMe: t('instructors.experts.alexandru.bio'),
-    photoUrl: '/images/experts/alexandru-radovici.png',
+    photoUrl: asset('/images/experts/alexandru-radovici.png'),
     linkedinUrl: 'https://www.linkedin.com/in/alexandruradovici/',
   },
   {
     name: t('instructors.experts.ioana.name'),
     role: t('instructors.experts.ioana.role'),
     aboutMe: t('instructors.experts.ioana.bio'),
-    photoUrl: '/images/experts/ioana-culic.png',
+    photoUrl: asset('/images/experts/ioana-culic.png'),
     linkedinUrl: 'https://www.linkedin.com/in/ioanaculic/',
   },
 ])

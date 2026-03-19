@@ -2,6 +2,7 @@
 import type { ITrainingType } from '~/types/index'
 
 const { t, tm, locale } = useI18n()
+const asset = usePublicUrl()
 
 const categories = computed(() => [
   { id: 'all', label: t('trainings.categories.all'), emoji: '🎯' },
@@ -71,7 +72,7 @@ const trainings: ITrainingType[] = [
       'Traits and generics basics',
       'Cargo and the package ecosystem',
     ],
-    programPdfLink: '/pdfs/rust-fundamentals-short.pdf',
+    programPdfLink: asset('/pdfs/rust-fundamentals-short.pdf'),
   },
   {
     emoji: '🦀',
@@ -91,7 +92,7 @@ const trainings: ITrainingType[] = [
       'Modules and crate organization',
       'Guided final project with mentorship',
     ],
-    programPdfLink: '/pdfs/rust-fundamentals-project.pdf',
+    programPdfLink: asset('/pdfs/rust-fundamentals-project.pdf'),
   },
   {
     emoji: '🦀',
@@ -111,7 +112,7 @@ const trainings: ITrainingType[] = [
       'Memory models and safety guarantees',
       'Unit testing and benchmarks',
     ],
-    programPdfLink: '/pdfs/rust-fundamentals-extended.pdf',
+    programPdfLink: asset('/pdfs/rust-fundamentals-extended.pdf'),
   },
   {
     emoji: '🔌',
@@ -130,7 +131,7 @@ const trainings: ITrainingType[] = [
       'Real-time networking protocols',
       'Tock OS and memory protection',
     ],
-    programPdfLink: '/pdfs/embedded-rust.pdf',
+    programPdfLink: asset('/pdfs/embedded-rust.pdf'),
   },
   {
     emoji: '⚡',
@@ -149,7 +150,7 @@ const trainings: ITrainingType[] = [
       'Streams and channels',
       'Performance profiling for async code',
     ],
-    programPdfLink: '/pdfs/async-rust.pdf',
+    programPdfLink: asset('/pdfs/async-rust.pdf'),
   },
   {
     emoji: '🌐',
@@ -168,7 +169,7 @@ const trainings: ITrainingType[] = [
       'Middleware and request handling',
       'Docker and NGINX deployment',
     ],
-    programPdfLink: '/pdfs/web-rust.pdf',
+    programPdfLink: asset('/pdfs/web-rust.pdf'),
   },
   {
     emoji: '🖥️',
@@ -187,7 +188,7 @@ const trainings: ITrainingType[] = [
       'SQLite database integration',
       'Cross-platform distribution and packaging',
     ],
-    programPdfLink: '/pdfs/tauri-desktop.pdf',
+    programPdfLink: asset('/pdfs/tauri-desktop.pdf'),
   },
   {
     emoji: '🔧',
@@ -206,7 +207,7 @@ const trainings: ITrainingType[] = [
       'Memory ownership at language boundaries',
       'Incremental migration strategies',
     ],
-    programPdfLink: '/pdfs/rust-interop-c.pdf',
+    programPdfLink: asset('/pdfs/rust-interop-c.pdf'),
   },
   {
     emoji: '🐍',
@@ -225,7 +226,7 @@ const trainings: ITrainingType[] = [
       'Performance-critical extension modules',
       'Python packaging and distribution',
     ],
-    programPdfLink: '/pdfs/rust-interop-python.pdf',
+    programPdfLink: asset('/pdfs/rust-interop-python.pdf'),
   },
   {
     emoji: '✅',
@@ -244,7 +245,7 @@ const trainings: ITrainingType[] = [
       'clippy and code quality automation',
       'CI/CD pipeline integration',
     ],
-    programPdfLink: '/pdfs/tdd-rust.pdf',
+    programPdfLink: asset('/pdfs/tdd-rust.pdf'),
   },
   {
     emoji: '🐛',
@@ -263,7 +264,7 @@ const trainings: ITrainingType[] = [
       'tracing and structured logging',
       'probe-rs for embedded debugging',
     ],
-    programPdfLink: '/pdfs/debugging-rust.pdf',
+    programPdfLink: asset('/pdfs/debugging-rust.pdf'),
   },
   {
     emoji: '🧩',
@@ -282,7 +283,7 @@ const trainings: ITrainingType[] = [
       'Wasmtime runtime deployment',
       'Performance optimization techniques',
     ],
-    programPdfLink: '/pdfs/wasm-rust.pdf',
+    programPdfLink: asset('/pdfs/wasm-rust.pdf'),
   },
   {
     emoji: '📊',
@@ -301,7 +302,7 @@ const trainings: ITrainingType[] = [
       'CPU cache optimization strategies',
       'Async runtime performance tuning',
     ],
-    programPdfLink: '/pdfs/performance-rust.pdf',
+    programPdfLink: asset('/pdfs/performance-rust.pdf'),
   },
 ]
 
