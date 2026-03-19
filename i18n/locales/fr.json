@@ -16,24 +16,27 @@
   },
   "home": {
     "hero": {
-      "title": "Bienvenue sur Wyliodrin Academy",
-      "subtitle": "Votre sous-titre ici."
+      "badge": "🎯 Qualiopi Certified",
+      "heading": "Maîtrisez Rust, WebAssembly & Systèmes Embarqués",
+      "subtitle": "Excellence en formation B2B avec certification Qualiopi. Construisez des systèmes plus sûrs et plus rapides avec des experts de l'industrie.",
+      "ctaPrimary": "Explorer les Formations",
+      "ctaSecondary": "Nous Contacter"
     }
   },
   "contact": {
-    "heading": "Nous Contacter",
+    "heading": "Contactez-nous",
     "subtitle": "Discutons de la façon dont nous pouvons aider votre équipe à progresser",
     "perks": {
-      "email":     { "title": "Réponse par Email",    "subtitle": "< 24 heures" },
-      "solutions": { "title": "Solutions Sur-Mesure",  "subtitle": "Pour votre équipe" },
-      "quality":   { "title": "Qualité Certifiée",     "subtitle": "Qualiopi" }
+      "email":     { "title": "Réponse Email",        "subtitle": "< 24 heures" },
+      "solutions": { "title": "Solutions Sur Mesure",  "subtitle": "Pour votre équipe" },
+      "quality":   { "title": "Certifié Qualité",      "subtitle": "Qualiopi" }
     },
     "form": {
       "name":    "Nom Complet",
       "email":   "Adresse Email",
       "company": "Nom de l'Entreprise",
       "message": "Message",
-      "submit":  "Envoyer le Message"
+      "submit":  "Envoyer Message"
     },
     "success": {
       "title": "Message Envoyé !",
@@ -53,14 +56,14 @@
   },
   "trainings": {
     "heading": "Catalogue de Formations",
-    "subtitle": "Des formations complètes conçues pour les développeurs et équipes d'ingénierie professionnels",
+    "subtitle": "Cours complets conçus pour les développeurs professionnels et les équipes d'ingénierie",
     "filters": {
       "category": "Catégorie",
       "level": "Niveau"
     },
     "showing": "{count} formations affichées",
     "viewDetails": "Voir Détails",
-    "viewAll": "Tout Afficher",
+    "viewAll": "Voir Tout",
     "downloadProgram": "Télécharger le Programme",
     "letsTalk": "Parlons-en",
     "overview": "Aperçu",
@@ -74,39 +77,109 @@
       "interop": "Interopérabilité"
     },
     "levels": {
-      "all": "Tous",
+      "all": "Toutes",
       "beginner": "Débutant",
       "intermediate": "Intermédiaire",
       "advanced": "Avancé"
+    },
+    "catalog": {
+      "rustFundamentalsShort": {
+        "title": "Fondamentaux de Rust",
+        "subtitle": "(Format Court)",
+        "description": "Comprenez comment Rust pense la mémoire. Couvre la propriété, l'emprunt et le système de types de base — les fondations qui déterminent si votre équipe écrit du Rust sûr ou des habitudes non sûres enveloppées dans la syntaxe Rust.",
+        "details": ["Modèle de propriété et d'emprunt", "Types primitifs, structures, énumérations", "Pattern matching et flux de contrôle", "Traits et bases des génériques", "Cargo et l'écosystème des packages"]
+      },
+      "rustFundamentalsProject": {
+        "title": "Fondamentaux de Rust",
+        "subtitle": "(Avec Projet Final)",
+        "description": "Tout ce qui est dans le programme de 3 jours, plus les patterns de conception, la gestion des erreurs et un projet final complet construit avec mentorat. Pour les développeurs qui doivent passer de la compréhension de Rust à la structuration d'une vraie base de code.",
+        "details": ["Tout le contenu de 3 jours inclus", "Gestion des erreurs avec Result et Option", "Patterns de conception en Rust", "Organisation des modules et des crates", "Projet final guidé avec mentorat"]
+      },
+      "rustFundamentalsExtended": {
+        "title": "Fondamentaux de Rust",
+        "subtitle": "(Format Étendu)",
+        "description": "Le programme de base Rust le plus complet. Couvre le langage complet, y compris les pointeurs intelligents, la concurrence, les modèles de mémoire et les tests unitaires. Pour les équipes qui ont besoin d'une base Rust solide et prête pour la production dès le premier jour.",
+        "details": ["Couverture complète du langage", "Pointeurs intelligents et durées de vie", "Concurrence avec threads et canaux", "Modèles de mémoire et garanties de sécurité", "Tests unitaires et benchmarks"]
+      },
+      "embeddedRust": {
+        "title": "Développement Embarqué en Rust",
+        "description": "Développement de firmware bare-metal et async pour les équipes développant des systèmes embarqués à sécurité critique. Couvre l'intégralité de la pile Rust embarquée — des couches d'abstraction matérielle au réseau temps réel et à la protection mémoire au niveau OS.",
+        "details": ["Bases de la programmation bare-metal", "Couches d'abstraction matérielle (HAL)", "Runtime async Embassy pour l'embarqué", "Protocoles réseau temps réel", "Tock OS et protection mémoire"]
+      },
+      "asyncRust": {
+        "title": "Rust Asynchrone",
+        "description": "Maîtrisez Rust async avec Tokio et apprenez à construire votre propre runtime. Pour les développeurs systèmes et les ingénieurs backend qui ont besoin de comprendre non seulement comment l'async fonctionne en Rust, mais pourquoi il fonctionne ainsi.",
+        "details": ["Fondamentaux async/await", "Plongée dans le runtime Tokio", "Construction de futures et d'exécuteurs personnalisés", "Streams et canaux", "Profilage de performances pour code async"]
+      },
+      "webRust": {
+        "title": "Développement Web en Rust",
+        "description": "Construisez et déployez des applications Rust full-stack avec Rocket pour le backend et WebAssembly pour le frontend. Couvre la conception d'API, l'authentification, les middlewares et le déploiement en production avec Docker et NGINX.",
+        "details": ["Framework Rocket et routage", "Conception d'API REST et authentification", "Intégration frontend WebAssembly", "Middleware et gestion des requêtes", "Déploiement Docker et NGINX"]
+      },
+      "tauriDesktop": {
+        "title": "Applications Bureau avec Tauri",
+        "description": "Construisez des applications bureau légères et multiplateformes avec Rust et Tauri. Couvre les interfaces multi-fenêtres, la communication async avec le backend, l'intégration de bases de données et la distribution — pour les équipes qui migrent d'Electron.",
+        "details": ["Configuration et architecture de projet Tauri", "Conception d'interface multi-fenêtres", "Communication backend Rust async", "Intégration base de données SQLite", "Distribution et packaging multiplateformes"]
+      },
+      "rustInteropC": {
+        "title": "Interopérabilité Rust avec C/C++",
+        "description": "Intégrez des modules Rust en toute sécurité dans des bases de code C et C++ existantes. Pour les équipes effectuant une migration progressive — nouveaux modules en Rust, code hérité préservé à la frontière — sans arrêter la production ni introduire de comportements non sécurisés.",
+        "details": ["Bases de l'interface de fonctions étrangères (FFI)", "bindgen pour les liaisons d'en-têtes C", "CXX pour l'intégration sécurisée C++", "Propriété mémoire aux frontières de langages", "Stratégies de migration progressive"]
+      },
+      "rustInteropPython": {
+        "title": "Interopérabilité Rust avec Python",
+        "description": "Appelez Rust depuis Python avec PyO3 et FFI, et packagez des extensions avec maturin. Pour les développeurs Python qui ont besoin de composants critiques en performance sans réécrire toute leur pile — Rust là où c'est important, Python là où ça fonctionne.",
+        "details": ["PyO3 pour les liaisons Rust-Python", "Patterns FFI et sécurité mémoire", "Chaîne d'outils de build maturin", "Modules d'extension critiques en performance", "Packaging et distribution Python"]
+      },
+      "tddRust": {
+        "title": "Développement Piloté par les Tests en Rust",
+        "description": "Appliquez les principes TDD en Rust avec des outils intégrés et des pipelines CI. Pour les équipes qui veulent des processus logiciels robustes — pas seulement du code fonctionnel — avec des tests automatisés, des rapports de couverture et des workflows de documentation intégrés dès le départ.",
+        "details": ["Workflow TDD avec cargo test", "Patterns de tests unitaires et d'intégration", "Mocking et isolation des tests", "clippy et automatisation de la qualité du code", "Intégration de pipeline CI/CD"]
+      },
+      "debuggingRust": {
+        "title": "Débogage en Rust",
+        "description": "Débogage confiant sur toute la pile Rust — des logs et traces de pile aux deadlocks async et au matériel embarqué. Pour les développeurs qui écrivent du Rust en production et doivent diagnostiquer des problèmes complexes rapidement.",
+        "details": ["GDB et LLDB pour le débogage Rust", "miri pour la détection de comportements indéfinis", "tokio-console pour les diagnostics async", "tracing et journalisation structurée", "probe-rs pour le débogage embarqué"]
+      },
+      "wasmRust": {
+        "title": "WebAssembly avec Rust",
+        "description": "Compilez Rust en WebAssembly, intégrez avec JavaScript et déployez des applications système avec Wasmtime. Pour les développeurs construisant des applications portables et haute performance qui s'exécutent à la périphérie, dans le navigateur ou sur n'importe quelle plateforme.",
+        "details": ["Compilation Rust en WebAssembly", "wasm-bindgen pour l'intégration JS", "WASI et interface système", "Déploiement du runtime Wasmtime", "Techniques d'optimisation des performances"]
+      },
+      "performanceRust": {
+        "title": "Évaluation des Performances en Rust",
+        "description": "Analysez et améliorez systématiquement les performances mémoire, CPU et runtime async dans les applications Rust. Pour les développeurs de logiciels haute performance qui doivent aller au-delà du code fonctionnel vers une efficacité de niveau production.",
+        "details": ["Profilage avec flamegraph et perf", "Benchmarking avec criterion", "Profilage mémoire et analyse du tas", "Stratégies d'optimisation du cache CPU", "Optimisation des performances du runtime async"]
+      }
     }
   },
   "impact": {
     "heading": "Notre Impact",
-    "subtitle": "Des résultats mesurables issus de nos programmes de formation",
+    "subtitle": "Résultats mesurables de nos programmes de formation",
     "cta": "Rejoignez des centaines de développeurs qui ont transformé leur carrière",
-    "button": "Commencer Votre Parcours",
+    "button": "Commencez Votre Parcours",
     "stats": {
-      "trainings": "Formations dispensées",
-      "satisfaction": "Taux de satisfaction",
-      "students": "Étudiants formés",
-      "companies": "Entreprises partenaires"
+      "trainings": "Formations Dispensées",
+      "satisfaction": "Taux de Satisfaction",
+      "students": "Étudiants Formés",
+      "companies": "Entreprises Servies"
     }
   },
   "instructors": {
-    "heading": "Rencontrez nos experts",
-    "subtitle": "Apprenez avec des professionnels reconnus et une expérience terrain réelle",
+    "heading": "Nos Experts",
+    "subtitle": "Apprenez auprès de professionnels de l'industrie avec une expérience concrète",
     "about": "À propos",
     "viewLinkedin": "Voir le profil LinkedIn",
     "experts": {
       "alexandru": {
         "name": "Alexandru Radovici",
-        "role": "Expert Rust & Systèmes Embarqués",
-        "bio": "Alexandru est un expert reconnu en programmation Rust et systèmes embarqués avec plus de 15 ans d'expérience. Il a dirigé de nombreux projets IoT et temps réel à grande échelle."
+        "role": "Expert Principal Rust & Systèmes Embarqués",
+        "bio": "Alexandru est un expert reconnu en programmation Rust et systèmes embarqués avec plus de 15 ans d'expérience. Il a dirigé plusieurs projets à grande échelle dans l'IoT et les systèmes temps réel."
       },
       "ioana": {
         "name": "Ioana Culic",
         "role": "Spécialiste WebAssembly & Rust",
-        "bio": "Ioana est spécialisée en WebAssembly et technologies web modernes. Elle a une vaste expérience dans la création d'applications web haute performance et la formation de développeurs dans le monde entier."
+        "bio": "Ioana est spécialisée en WebAssembly et technologies web modernes. Elle possède une vaste expérience dans la création d'applications web haute performance et la formation de développeurs dans le monde entier."
       }
     }
   },
@@ -114,12 +187,12 @@
     "description": "Formation professionnelle en Rust, WebAssembly et systèmes embarqués avec certification Qualiopi.",
     "quickLinks": "Liens Rapides",
     "legal": {
-      "title": "Mentions Légales & Conformité",
+      "title": "Légal & Conformité",
       "accessibility": "Déclaration d'Accessibilité",
       "mentions": "Mentions Légales",
       "privacy": "Politique de Confidentialité",
-      "quality": "Critères Qualité",
-      "qualiopi": "Certifié Qualiopi"
+      "quality": "Normes de Qualité",
+      "qualiopi": "Qualiopi Certified"
     },
     "rights": "Tous droits réservés."
   }

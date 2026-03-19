@@ -16,8 +16,11 @@
   },
   "home": {
     "hero": {
-      "title": "Welcome to Wyliodrin Academy",
-      "subtitle": "Your subtitle goes here."
+      "badge": "🎯 Qualiopi Certified",
+      "heading": "Master Rust, WebAssembly & Embedded Systems",
+      "subtitle": "B2B training excellence with Qualiopi certification. Build safer, faster systems with industry-leading experts.",
+      "ctaPrimary": "Explore Trainings",
+      "ctaSecondary": "Talk to Us"
     }
   },
   "contact": {
@@ -78,6 +81,76 @@
       "beginner": "Beginner",
       "intermediate": "Intermediate",
       "advanced": "Advanced"
+    },
+    "catalog": {
+      "rustFundamentalsShort": {
+        "title": "Rust Fundamentals",
+        "subtitle": "(Short Format)",
+        "description": "Understand how Rust thinks about memory. Covers ownership, borrowing, and the core type system — the foundations that determine whether your team writes safe Rust or unsafe habits wrapped in Rust syntax.",
+        "details": ["Ownership and borrowing model", "Primitive types, structs, enums", "Pattern matching and control flow", "Traits and generics basics", "Cargo and the package ecosystem"]
+      },
+      "rustFundamentalsProject": {
+        "title": "Rust Fundamentals",
+        "subtitle": "(With Final Project)",
+        "description": "Everything in the 3-day program, plus design patterns, error handling, and a complete final project built with mentorship. For developers who need to move from understanding Rust to structuring a real codebase in it.",
+        "details": ["All 3-day content included", "Error handling with Result and Option", "Design patterns in Rust", "Modules and crate organization", "Guided final project with mentorship"]
+      },
+      "rustFundamentalsExtended": {
+        "title": "Rust Fundamentals",
+        "subtitle": "(Extended Format)",
+        "description": "The most comprehensive Rust foundation program. Covers the full language including smart pointers, concurrency, memory models, and unit testing. For teams that need a solid, production-ready Rust foundation from day one.",
+        "details": ["Complete language coverage", "Smart pointers and lifetimes", "Concurrency with threads and channels", "Memory models and safety guarantees", "Unit testing and benchmarks"]
+      },
+      "embeddedRust": {
+        "title": "Embedded Development in Rust",
+        "description": "Bare-metal and async firmware development for teams building safety-critical embedded systems. Covers the full embedded Rust stack — from hardware abstraction layers to real-time networking and OS-level memory protection.",
+        "details": ["Bare-metal programming fundamentals", "Hardware abstraction layers (HAL)", "Embassy async runtime for embedded", "Real-time networking protocols", "Tock OS and memory protection"]
+      },
+      "asyncRust": {
+        "title": "Asynchronous Rust",
+        "description": "Master async Rust with Tokio and learn to build your own runtime. For system-level developers and backend engineers who need to understand not just how async works in Rust, but why it works the way it does.",
+        "details": ["Async/await fundamentals", "Tokio runtime deep dive", "Building custom futures and executors", "Streams and channels", "Performance profiling for async code"]
+      },
+      "webRust": {
+        "title": "Web Development in Rust",
+        "description": "Build and deploy full-stack Rust applications using Rocket for the backend and WebAssembly for the frontend. Covers API design, authentication, middleware, and production deployment with Docker and NGINX.",
+        "details": ["Rocket framework and routing", "REST API design and authentication", "WebAssembly frontend integration", "Middleware and request handling", "Docker and NGINX deployment"]
+      },
+      "tauriDesktop": {
+        "title": "Desktop Applications with Tauri",
+        "description": "Build lightweight, cross-platform desktop applications using Rust and Tauri. Covers multi-window interfaces, async backend communication, database integration, and application distribution — for teams moving away from Electron.",
+        "details": ["Tauri project setup and architecture", "Multi-window interface design", "Async Rust backend communication", "SQLite database integration", "Cross-platform distribution and packaging"]
+      },
+      "rustInteropC": {
+        "title": "Rust Interoperability with C/C++",
+        "description": "Integrate Rust modules safely into existing C and C++ codebases. For teams doing incremental migration — new modules in Rust, legacy code preserved at the boundary — without stopping production or introducing unsafe behavior.",
+        "details": ["Foreign Function Interface (FFI) fundamentals", "bindgen for C header bindings", "CXX for safe C++ integration", "Memory ownership at language boundaries", "Incremental migration strategies"]
+      },
+      "rustInteropPython": {
+        "title": "Rust Interoperability with Python",
+        "description": "Call Rust from Python using PyO3 and FFI, and package extensions with maturin. For Python developers who need performance-critical components without rewriting their entire stack — Rust where it matters, Python where it works.",
+        "details": ["PyO3 for Rust-Python bindings", "FFI patterns and memory safety", "maturin build toolchain", "Performance-critical extension modules", "Python packaging and distribution"]
+      },
+      "tddRust": {
+        "title": "Test-Driven Development in Rust",
+        "description": "Apply TDD principles in Rust with integrated tooling and CI pipelines. For teams that want robust software processes — not just working code — with automated testing, coverage reporting, and documentation workflows built in from the start.",
+        "details": ["TDD workflow with cargo test", "Unit and integration testing patterns", "Mocking and test isolation", "clippy and code quality automation", "CI/CD pipeline integration"]
+      },
+      "debuggingRust": {
+        "title": "Debugging in Rust",
+        "description": "Confident debugging across the full Rust stack — from logging and stack traces to async deadlocks and embedded hardware. For developers who are writing Rust in production and need to diagnose complex issues fast.",
+        "details": ["GDB and LLDB for Rust debugging", "miri for undefined behavior detection", "tokio-console for async diagnostics", "tracing and structured logging", "probe-rs for embedded debugging"]
+      },
+      "wasmRust": {
+        "title": "WebAssembly with Rust",
+        "description": "Compile Rust to WebAssembly, integrate with JavaScript, and deploy system-level applications using Wasmtime. For developers building portable, high-performance applications that run at the edge, in the browser, or on any platform.",
+        "details": ["Compiling Rust to WebAssembly", "wasm-bindgen for JS integration", "WASI and system interface", "Wasmtime runtime deployment", "Performance optimization techniques"]
+      },
+      "performanceRust": {
+        "title": "Performance Evaluation in Rust",
+        "description": "Analyze and systematically improve memory, CPU, and async runtime performance in Rust applications. For high-performance software developers who need to move beyond working code to production-grade efficiency.",
+        "details": ["Profiling with flamegraph and perf", "Benchmarking with criterion", "Memory profiling and heap analysis", "CPU cache optimization strategies", "Async runtime performance tuning"]
+      }
     }
   },
   "impact": {

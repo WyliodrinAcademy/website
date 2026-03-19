@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ITrainingType } from '~/types/index'
 
-const { t } = useI18n()
+const { t, tm, locale } = useI18n()
 
 const categories = computed(() => [
   { id: 'all', label: t('trainings.categories.all'), emoji: '🎯' },
@@ -55,6 +55,7 @@ function openDialog(training: ITrainingType) {
 const trainings: ITrainingType[] = [
   {
     emoji: '🦀',
+    key: 'rustFundamentalsShort',
     title: 'Rust Fundamentals',
     subtitle: '(Short Format)',
     duration: '3 days',
@@ -74,6 +75,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🦀',
+    key: 'rustFundamentalsProject',
     title: 'Rust Fundamentals',
     subtitle: '(With Final Project)',
     duration: '5 days',
@@ -93,6 +95,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🦀',
+    key: 'rustFundamentalsExtended',
     title: 'Rust Fundamentals',
     subtitle: '(Extended Format)',
     duration: '7 days',
@@ -112,6 +115,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🔌',
+    key: 'embeddedRust',
     title: 'Embedded Development in Rust',
     duration: '6 days',
     level: 'Intermediate',
@@ -130,6 +134,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '⚡',
+    key: 'asyncRust',
     title: 'Asynchronous Rust',
     duration: '5 days',
     level: 'Intermediate',
@@ -148,6 +153,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🌐',
+    key: 'webRust',
     title: 'Web Development in Rust',
     duration: '4 days',
     level: 'Intermediate',
@@ -166,6 +172,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🖥️',
+    key: 'tauriDesktop',
     title: 'Desktop Applications with Tauri',
     duration: '3 days',
     level: 'Intermediate',
@@ -184,6 +191,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🔧',
+    key: 'rustInteropC',
     title: 'Rust Interoperability with C/C++',
     duration: '4–5 days',
     level: 'Intermediate',
@@ -202,6 +210,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🐍',
+    key: 'rustInteropPython',
     title: 'Rust Interoperability with Python',
     duration: 'Custom',
     level: 'Intermediate',
@@ -220,6 +229,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '✅',
+    key: 'tddRust',
     title: 'Test-Driven Development in Rust',
     duration: '3–4 days',
     level: 'Intermediate',
@@ -238,6 +248,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🐛',
+    key: 'debuggingRust',
     title: 'Debugging in Rust',
     duration: '2–3 days',
     level: 'Advanced',
@@ -256,6 +267,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '🧩',
+    key: 'wasmRust',
     title: 'WebAssembly with Rust',
     duration: '4–5 days',
     level: 'Intermediate',
@@ -274,6 +286,7 @@ const trainings: ITrainingType[] = [
   },
   {
     emoji: '📊',
+    key: 'performanceRust',
     title: 'Performance Evaluation in Rust',
     duration: '4–5 days',
     level: 'Advanced',
@@ -292,8 +305,24 @@ const trainings: ITrainingType[] = [
   },
 ]
 
+const localizedTrainings = computed(() => {
+  if (locale.value === 'en') return trainings
+  return trainings.map((tr) => {
+    const key = tr.key
+    if (!key) return tr
+    const rawDetails = tm(`trainings.catalog.${key}.details`)
+    return {
+      ...tr,
+      title: t(`trainings.catalog.${key}.title`, tr.title),
+      subtitle: tr.subtitle ? t(`trainings.catalog.${key}.subtitle`, tr.subtitle) : undefined,
+      description: t(`trainings.catalog.${key}.description`, tr.description),
+      details: Array.isArray(rawDetails) ? (rawDetails as string[]) : tr.details,
+    }
+  })
+})
+
 const filteredTrainings = computed(() => {
-  return trainings.filter((t) => {
+  return localizedTrainings.value.filter((t) => {
     const matchesCategory = activeCategory.value === 'all' || t.category === activeCategory.value
     const matchesLevel = activeLevel.value === 'All' || t.level === activeLevel.value
     return matchesCategory && matchesLevel

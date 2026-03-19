@@ -10,6 +10,13 @@ const props = withDefaults(
   }>(),
   { variant: 'category' },
 )
+
+const { t } = useI18n()
+
+const displayLabel = computed(() => {
+  if (props.level) return t(`trainings.levels.${props.level.toLowerCase()}`, props.level)
+  return props.label ?? ''
+})
 </script>
 
 <template>
@@ -24,6 +31,6 @@ const props = withDefaults(
       variant === 'category' && 'bg-[#66f2e3]/20 text-[#1a1a1a]',
     ]"
   >
-    {{ level ?? label }}
+    {{ displayLabel }}
   </span>
 </template>

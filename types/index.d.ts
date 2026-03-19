@@ -15,6 +15,7 @@ export type TrainingCategory = 'rust' | 'wasm' | 'embedded' | 'interop'
 
 export interface ITrainingType {
   emoji: string
+  key?: string
   title: string
   subtitle?: string
   duration: string

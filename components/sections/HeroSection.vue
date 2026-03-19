@@ -6,7 +6,7 @@
         <div class="hero-slide-left space-y-6">
           <!-- Qualiopi badge -->
           <div class="hero-fade-up hero-delay-100 inline-block px-4 py-2 bg-[#560d08] rounded-full">
-            <span class="text-white text-sm font-medium">🎯 Qualiopi Certified</span>
+            <span class="text-white text-sm font-medium">{{ t('home.hero.badge') }}</span>
           </div>
 
           <!-- Heading -->
@@ -14,23 +14,22 @@
             class="hero-fade-up hero-delay-200 text-4xl md:text-5xl lg:text-6xl font-bold text-[#560d08] leading-tight"
             style="font-family: 'Space Grotesk', sans-serif"
           >
-            Master Rust, WebAssembly &amp; Embedded Systems
+            {{ t('home.hero.heading') }}
           </h1>
 
           <!-- Subtitle -->
           <p class="hero-fade-up hero-delay-350 text-lg md:text-xl text-[#666] leading-relaxed max-w-xl">
-            B2B training excellence with Qualiopi certification. Build safer, faster systems with
-            industry-leading experts.
+            {{ t('home.hero.subtitle') }}
           </p>
 
           <!-- CTA buttons -->
           <div class="hero-fade-up hero-delay-500 flex flex-wrap gap-4 pt-4">
             <UiButton as="a" href="#trainings" variant="primary">
-              Explore Trainings
+              {{ t('home.hero.ctaPrimary') }}
               <Icon name="lucide:arrow-right" class="w-5 h-5" />
             </UiButton>
             <UiButton as="a" href="#contact" variant="outline">
-              Talk to Us
+              {{ t('home.hero.ctaSecondary') }}
               <Icon name="lucide:message-circle" class="w-5 h-5" />
             </UiButton>
           </div>
@@ -54,6 +53,10 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const { t } = useI18n()
+</script>
 
 <style scoped>
 @keyframes heroSlideInLeft {
