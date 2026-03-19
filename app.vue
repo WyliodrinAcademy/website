@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const head = useLocaleHead({ addSeoAttributes: true })
+const siteUrl = useRuntimeConfig().public.siteUrl
+
+useHead({
+  link: [{ rel: 'icon', type: 'image/png', href: `${siteUrl}/favicon.png` }],
+})
 </script>
 
 <template>
