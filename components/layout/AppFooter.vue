@@ -9,15 +9,34 @@ const quickLinks = [
   { key: 'resources', href: '/#resources' },
   { key: 'contact', href: '/#contact' },
 ]
+
+const footerRef = ref<HTMLElement>()
+const footerVisible = ref(false)
+
+onMounted(() => {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        footerVisible.value = true
+        io.disconnect()
+      }
+    },
+    { threshold: 0.2 },
+  )
+  if (footerRef.value) io.observe(footerRef.value)
+})
 </script>
 
 <template>
-  <footer class="bg-[#1a1a1a] text-white">
+  <footer ref="footerRef" class="bg-[#1a1a1a] text-white">
     <div class="max-w-310 mx-auto px-6 py-12">
       <!-- 3-col grid -->
       <div class="grid md:grid-cols-3 gap-8 mb-8">
         <!-- Logo + description -->
-        <div>
+        <div
+          class="transition-all duration-500 ease-out"
+          :class="footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        >
           <div class="mb-4">
             <img src="/images/logo.png" alt="Wyliodrin Academy" class="h-16 w-auto" />
           </div>
@@ -27,7 +46,11 @@ const quickLinks = [
         </div>
 
         <!-- Quick Links -->
-        <div>
+        <div
+          class="transition-all duration-500 ease-out"
+          :class="footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+          :style="{ transitionDelay: footerVisible ? '100ms' : '0ms' }"
+        >
           <h3
             class="font-semibold text-white mb-4"
             style="font-family: 'Space Grotesk', sans-serif"
@@ -47,7 +70,11 @@ const quickLinks = [
         </div>
 
         <!-- Legal & Compliance -->
-        <div>
+        <div
+          class="transition-all duration-500 ease-out"
+          :class="footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+          :style="{ transitionDelay: footerVisible ? '200ms' : '0ms' }"
+        >
           <h3
             class="font-semibold text-white mb-4"
             style="font-family: 'Space Grotesk', sans-serif"
@@ -98,7 +125,11 @@ const quickLinks = [
       </div>
 
       <!-- Bottom bar -->
-      <div class="border-t border-white/10 pt-8">
+      <div
+        class="border-t border-white/10 pt-8 transition-all duration-500 ease-out"
+        :class="footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'"
+        :style="{ transitionDelay: footerVisible ? '300ms' : '0ms' }"
+      >
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-white/60 text-sm">
             © {{ year }} Wyliodrin Academy. {{ t('footer.rights') }}
