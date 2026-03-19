@@ -2,6 +2,22 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://wyliodrinacademy.github.io',
+    },
+  },
+
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      meta: [
+        { name: 'theme-color', content: '#560d08' },
+      ],
+    },
+  },
+
   // Keep Nuxt 3-style root source directory (components/, pages/, etc. at project root)
   srcDir: '.',
 

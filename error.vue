@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useSeoMeta({ robots: 'noindex, nofollow' })
+
 defineProps<{
   error: {
     statusCode: number

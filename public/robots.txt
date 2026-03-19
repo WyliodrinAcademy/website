@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wyliodrinacademy.github.io/sitemap.xml
