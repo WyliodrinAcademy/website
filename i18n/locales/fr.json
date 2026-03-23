@@ -36,7 +36,8 @@
       "email":   "Adresse Email",
       "company": "Nom de l'Entreprise",
       "message": "Message",
-      "submit":  "Envoyer Message"
+      "submit":  "Envoyer Message",
+      "error":   "Une erreur est survenue. Veuillez réessayer."
     },
     "success": {
       "title": "Message Envoyé !",

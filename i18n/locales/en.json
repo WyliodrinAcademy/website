@@ -36,7 +36,8 @@
       "email":   "Email Address",
       "company": "Company Name",
       "message": "Message",
-      "submit":  "Send Message"
+      "submit":  "Send Message",
+      "error":   "Something went wrong. Please try again."
     },
     "success": {
       "title": "Message Sent!",

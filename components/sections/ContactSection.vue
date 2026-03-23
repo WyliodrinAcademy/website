@@ -18,9 +18,48 @@ const form = reactive({
 })
 
 const submitted = ref(false)
+const loading = ref(false)
+const error = ref('')
+const honeypot = ref('')
 
-function handleSubmit() {
-  submitted.value = true
+async function handleSubmit() {
+  if (loading.value) return
+  if (honeypot.value !== '') return
+
+  loading.value = true
+  error.value = ''
+
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 10_000)
+
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/andrei.serban@wyliodrin.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        message: form.message,
+        _subject: 'New enquiry — Wyliodrin Academy',
+      }),
+    })
+    const data = await res.json()
+    if (data.success === 'true' || data.success === true) {
+      submitted.value = true
+    }
+    else {
+      error.value = t('contact.form.error')
+    }
+  }
+  catch {
+    error.value = t('contact.form.error')
+  }
+  finally {
+    clearTimeout(timeoutId)
+    loading.value = false
+  }
 }
 
 // Scroll-triggered entrance animations
@@ -125,16 +164,39 @@ onMounted(() => {
                   v-model="form.message"
                   required
                   rows="5"
+                  maxlength="2000"
                   class="w-full px-4 py-3 bg-[#f9f9f6] border border-[#d7d7d7] rounded-lg text-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-[#f0441a] transition-all resize-none"
                 />
               </div>
+
+              <!-- Honeypot: visually hidden, bots fill it, humans don't -->
+              <input
+                v-model="honeypot"
+                type="text"
+                name="fax"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+                style="position:absolute;left:-9999px;opacity:0;pointer-events:none;"
+              />
+
               <button
                 type="submit"
-                class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
+                :disabled="loading"
+                class="w-full px-6 py-4 bg-[#f0441a] text-white rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {{ t('contact.form.submit') }}
-                <Icon name="lucide:send" class="w-5 h-5" />
+                <template v-if="loading">
+                  <Icon name="lucide:loader-circle" class="w-5 h-5 animate-spin" />
+                </template>
+                <template v-else>
+                  {{ t('contact.form.submit') }}
+                  <Icon name="lucide:send" class="w-5 h-5" />
+                </template>
               </button>
+
+              <p v-if="error" class="text-sm text-[#f92d04] text-center -mt-2">
+                {{ error }}
+              </p>
             </form>
 
             <ContactSuccessCard v-else key="success" />
