@@ -132,8 +132,9 @@ onMounted(() => {
           <Transition name="form-fade" mode="out-in">
             <form v-if="!submitted" key="form" class="space-y-6" @submit.prevent="handleSubmit">
               <div>
-                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
+                <label for="contact-name" class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.name') }}</label>
                 <input
+                  id="contact-name"
                   v-model="form.name"
                   type="text"
                   required
@@ -141,8 +142,9 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
+                <label for="contact-email" class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.email') }}</label>
                 <input
+                  id="contact-email"
                   v-model="form.email"
                   type="email"
                   required
@@ -150,8 +152,9 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
+                <label for="contact-company" class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.company') }}</label>
                 <input
+                  id="contact-company"
                   v-model="form.company"
                   type="text"
                   required
@@ -159,8 +162,9 @@ onMounted(() => {
                 />
               </div>
               <div>
-                <label class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
+                <label for="contact-message" class="block text-sm font-semibold text-[#1a1a1a] mb-2">{{ t('contact.form.message') }}</label>
                 <textarea
+                  id="contact-message"
                   v-model="form.message"
                   required
                   rows="5"
