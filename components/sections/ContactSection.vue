@@ -21,6 +21,7 @@ const submitted = ref(false)
 const loading = ref(false)
 const error = ref('')
 const honeypot = ref('')
+let _fetchController: AbortController | null = null
 
 async function handleSubmit() {
   if (loading.value) return
@@ -29,14 +30,14 @@ async function handleSubmit() {
   loading.value = true
   error.value = ''
 
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 10_000)
+  _fetchController = new AbortController()
+  const timeoutId = setTimeout(() => _fetchController?.abort(), 10_000)
 
   try {
     const res = await fetch('https://formsubmit.co/ajax/andrei.serban@wyliodrin.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      signal: controller.signal,
+      signal: _fetchController.signal,
       body: JSON.stringify({
         name: form.name,
         email: form.email,
@@ -83,6 +84,8 @@ onMounted(() => {
   observe(leftRef.value,  () => { leftVisible.value  = true })
   observe(formRef.value,  () => { formVisible.value  = true })
 })
+
+onUnmounted(() => { _fetchController?.abort() })
 </script>
 
 <template>
